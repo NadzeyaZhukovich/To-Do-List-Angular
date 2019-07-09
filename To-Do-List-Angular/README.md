@@ -1,5 +1,9 @@
 # ToDoListAngular
 
+## Configuration
+This project use `json-server` dependency which allows us to interact with `data/db.json` file.
+We can run it: `json-server --watch data/db.json`. 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
 ## Development server
