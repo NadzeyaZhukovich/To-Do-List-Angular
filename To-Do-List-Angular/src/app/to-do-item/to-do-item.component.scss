@@ -1,0 +1,27 @@
+.task{
+    margin-bottom: 10px; 
+    display: flex;
+    align-items: baseline;
+    background-color: rgb(142, 222, 240);
+    padding: 5px;
+}
+
+.taskText{
+    width: 500px;
+    margin: 0 15px;
+    color: rgb(52, 52, 52);
+    flex-basis: 5%;
+
+}
+
+.taskText{
+    font-size: 90%;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    word-spacing: 4px;
+    flex-basis: 85%;
+}
+
+.taskDelete{
+    flex-basis: 10%
+}
