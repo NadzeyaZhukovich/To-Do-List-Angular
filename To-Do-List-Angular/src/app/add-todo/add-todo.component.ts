@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
-  selector: 'app-app-to-do',
-  templateUrl: './app-to-do.component.html',
-  styleUrls: ['./app-to-do.component.scss']
+  selector: 'app-add-todo',
+  templateUrl: './add-todo.component.html',
+  styleUrls: ['./add-todo.component.scss']
 })
-export class AppToDoComponent implements OnInit {
+export class AddToDoComponent implements OnInit {
 
   @Output() addEmitter = new EventEmitter<String>();
   taskTitle: string = '';
