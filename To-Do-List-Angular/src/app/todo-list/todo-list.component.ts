@@ -11,11 +11,22 @@ export class ToDoListComponent implements OnInit {
   
   constructor() { }
 
-  deleteItem(value: String) {
-    const index = this.toDoList.indexOf(value);
-    if (index > -1) {
-      this.toDoList.splice(index, 1);
-    }
+  deleteItem(id: String) {
+    fetch('http://localhost:3000/todos'+ '/' + id, {method: 'DELETE'})
+      .then((response) => {
+        if(response.status === 200) {
+          let index = -1;
+          for (let i = 0; i < this.toDoList.length; i++) {
+            if (this.toDoList[i].id === id) {
+              index = i;
+            }
+          }
+          
+          if (index > -1) {
+            this.toDoList.splice(index, 1);
+          }
+        }
+      })
   }
 
   ngOnInit() {

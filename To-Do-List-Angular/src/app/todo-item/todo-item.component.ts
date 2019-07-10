@@ -8,14 +8,14 @@ import { Title } from '@angular/platform-browser';
 })
 export class ToDoItemComponent implements OnInit {
 
-  @Input() title;
+  @Input() todo;
   @Output() deleteEmitter = new EventEmitter<String>();
 
   constructor() {
   }
 
   deleteTaskBtn() {
-    this.deleteEmitter.emit(this.title);
+    this.deleteEmitter.emit(this.todo.id);
   }
 
   ngOnInit() {

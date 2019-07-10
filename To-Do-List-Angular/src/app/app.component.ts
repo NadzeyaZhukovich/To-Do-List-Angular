@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import * as nanoid from 'nanoid';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,38 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
   title = 'To-Do-List-Angular';
-
-  @Input() toDoLists = ['Task1', 'Task2', 'Task3', 'Task4',];
+  TODOS_URL = 'http://localhost:3000/todos';
+ 
+  @Input() toDoLists = [];
 
   addTask(value: string) {
-    this.toDoLists.push(value);
+    const todo = {
+      "id": nanoid(),
+      "task": value
+    }
+    this.insertToDoOnServer(this.TODOS_URL, todo)
+  }
+
+  fetchTodos(url) {
+    fetch(url)
+    .then((response) => response.json())
+    .then((todos) => this.toDoLists = todos);
+  }
+
+  insertToDoOnServer(url, todo){
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(todo)
+    })
+    .then((response) => {
+      if (response.status === 201) {
+        this.toDoLists.push(todo);
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.fetchTodos(this.TODOS_URL);
   }
 }
