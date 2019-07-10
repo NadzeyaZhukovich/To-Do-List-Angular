@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import * as nanoid from 'nanoid';
+import { ToDo } from './model/ToDo';
+import { ToDoItemComponent } from './todo-item/todo-item.component';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +15,7 @@ export class AppComponent {
   @Input() toDoLists = [];
 
   addTask(value: string) {
-    const todo = {
-      "id": nanoid(),
-      "task": value
-    }
+    const todo = new ToDo(nanoid(), value);
     this.insertToDoOnServer(this.TODOS_URL, todo)
   }
 
@@ -26,7 +25,7 @@ export class AppComponent {
     .then((todos) => this.toDoLists = todos);
   }
 
-  insertToDoOnServer(url, todo){
+  insertToDoOnServer(url, todo: ToDo){
     fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
