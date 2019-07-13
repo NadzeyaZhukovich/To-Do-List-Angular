@@ -14,9 +14,9 @@ export class AppComponent {
  
   @Input() toDoLists = [];
 
-  addTask(value: string) {
-    const todo = new ToDo(nanoid(), value);
+  addTask(todo: ToDo) {
     this.insertToDoOnServer(this.TODOS_URL, todo)
+
   }
 
   fetchTodos(url) {
@@ -40,5 +40,8 @@ export class AppComponent {
 
   ngOnInit() {
     this.fetchTodos(this.TODOS_URL);
+    console.log(nanoid());
+    console.log(nanoid());
+    console.log(nanoid());
   }
 }

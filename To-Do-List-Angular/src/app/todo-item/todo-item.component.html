@@ -1,5 +1,9 @@
 <div class="task">
-    <input type="checkbox" class="taskCheckbox">
-    <p class="taskText">{{todo.task}}</p>
+    <!-- <label for="check">Checkbox</label> -->
+    <input type="checkbox" class="taskCheckbox" [(ngModel)]="isChecked" (change)="changedStatus($event)">
+    <p class="taskText" [class.completedTask]="completed">
+        <span class="taskLabel" *ngIf="visibleLabel">{{todo.label}}</span>
+        {{todo.task}}
+    </p>
     <button class="taskDelete" (click)="deleteTaskBtn()">Delete</button>
 </div>

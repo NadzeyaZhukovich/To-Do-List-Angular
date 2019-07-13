@@ -1,27 +1,56 @@
+$font-color: #2C0173;
+$violet-color: #7B37EB;
+$btn-border-color: #3B029A;
+$white-color: #fff;
+
 .task{
     margin-bottom: 10px; 
     display: flex;
-    align-items: baseline;
     align-items: center;
-    background-color: rgb(142, 222, 240);
-    padding: 5px;
-}
+    padding: 20px;
+    font-size: 110%;
+    border-bottom: 1px dotted $violet-color;
 
-.taskCheckbox{
-    flex-basis: 3%;
-}
+    &Checkbox{
+        flex-basis: 3%;
+    }
 
-.taskText{
-    font-size: 90%;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    word-spacing: 4px;
-    flex-basis: 87%;
-    width: 500px;
-    margin: 0 15px;
-    color: rgb(52, 52, 52);
-}
+    &Text{
+        text-transform: capitalize;
+        //вынести в общие стили 
+        letter-spacing: 1px;
+        word-spacing: 4px;
+        color: $font-color;
 
-.taskDelete{
-    flex-basis: 10%
+        flex-basis: 87%;
+        width: 500px;
+        margin: 0 15px;
+        word-wrap: break-word;
+        text-align: justify;
+    }
+
+    .completedTask{
+        text-decoration: line-through;
+    }
+
+    &Label{
+        margin-right: 10px;
+        padding: 5px;
+        background-color: $violet-color;
+        color: rgb(255, 255, 255);
+    }
+
+    &Delete{
+        flex-basis: 10%;
+        font-size: 90%;
+        border-style: none;
+        border: 1px solid $btn-border-color;
+        color: $font-color;
+        padding: 5px;
+    }
+
+    &Delete:hover{
+        color: $white-color;
+        background-color: $font-color;
+    }
 }
