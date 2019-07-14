@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import * as nanoid from 'nanoid';
 import { ToDo } from '../model/ToDo';
-import { element } from 'protractor';
-import { FormGroup } from '@angular/forms';
+import { Label } from '../model/Label';
 
 @Component({
   selector: 'app-add-todo',
@@ -11,22 +10,22 @@ import { FormGroup } from '@angular/forms';
 })
 export class AddToDoComponent implements OnInit {
 
-  private _labelList;
+  private _labelList: Array<Label> = new Array<Label>();
   
-  toDo = new ToDo(nanoid(), '', null);
+  toDo: ToDo = new ToDo(nanoid(), '', null);
 
   @Output() addEmitter = new EventEmitter<ToDo>();
   
-
-  @Input() 
-  set labelList(labels) {
-    this._labelList = labels;
-    this.toDo.label = this._labelList[0];
-  }
   get labelList() {
     return this._labelList;
   }
 
+  @Input() 
+  set labelList(labels: Array<Label>) {
+    this._labelList = labels;
+    this.toDo.label = this._labelList.length > 0 ? this._labelList[0] : null;
+  }
+  
   constructor() { }
 
   addTaskBtn() {
@@ -34,7 +33,14 @@ export class AddToDoComponent implements OnInit {
     this.cleanToDo();
   }
 
-  findLabelByTitle(labelTitle, labelList){
+  onLabelChanged(value: string) {
+    return this.toDo.label = this.findLabelByTitle(value, this.labelList);
+  }
+
+  ngOnInit() {
+  }
+
+  private findLabelByTitle(labelTitle: string, labelList: Array<Label>){
     let label = null;
     labelList.forEach(element => {
       if(labelTitle === element.title) {
@@ -45,15 +51,7 @@ export class AddToDoComponent implements OnInit {
     return label;
   }
 
-  onChange(selectedValue) {
-    return this.toDo.label = this.findLabelByTitle(selectedValue, this.labelList);
+  private cleanToDo() {
+    this.toDo = new ToDo(nanoid(), '', null);
   }
-
-  ngOnInit() {
-  }
-
-  cleanToDo() {
-    this.toDo = new ToDo(nanoid(), '', '');
-  }
-
 }

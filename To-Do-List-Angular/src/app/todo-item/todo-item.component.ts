@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { ToDo } from '../model/ToDo';
+import { Label } from '../model/Label';
 
 @Component({
   selector: 'app-todo-item',
@@ -8,14 +9,14 @@ import { Title } from '@angular/platform-browser';
 })
 export class ToDoItemComponent implements OnInit {
 
-  @Input() todo;
+  @Input() todo: ToDo;
   @Output() deleteEmitter = new EventEmitter<String>();
 
-  visibleLabel = false;
-  completed = false;
-  isChecked;
+  visibleLabel: boolean = false;
+  completed: boolean = false;
+  isChecked: boolean = false;
 
-  checkLabel(label){
+  checkLabel(label: Label){
     if(label) {
       this.visibleLabel = true;
     }
