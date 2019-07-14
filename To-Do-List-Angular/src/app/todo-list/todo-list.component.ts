@@ -12,8 +12,8 @@ export class ToDoListComponent implements OnInit {
   
   constructor() { }
 
-  deleteItem(id: String) {
-    fetch('http://localhost:3000/todos'+ '/' + id, {method: 'DELETE'})
+  deleteToDo(id: String) {
+    fetch('http://localhost:3000/todos' + '/' + id, {method: 'DELETE'})
       .then((response) => {
         if(response.status === 200) {
           let index = -1;
@@ -27,7 +27,20 @@ export class ToDoListComponent implements OnInit {
             this.toDoList.splice(index, 1);
           }
         }
-      })
+      });
+  }
+
+  updateToDo(todo: ToDo) {
+    fetch('http://localhost:3000/todos' + '/' + todo.id, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(todo)
+    })
+    .then(response => {
+      if(response.status !== 200) {
+        console.log("Error: PATCH => " + todo.id);
+      } 
+    })
   }
 
   ngOnInit() {

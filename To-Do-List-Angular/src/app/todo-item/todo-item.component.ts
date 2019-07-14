@@ -8,16 +8,15 @@ import { Label } from '../model/Label';
   styleUrls: ['./todo-item.component.scss']
 })
 export class ToDoItemComponent implements OnInit {
+  private _todo;
 
   @Input() todo: ToDo;
   @Output() deleteEmitter = new EventEmitter<String>();
+  @Output() updateEmitter = new EventEmitter<ToDo>();
 
-  completed: boolean = false;
-  isChecked: boolean = false;
-
-  changedStatus(event){
+  changedCompleteStatus(event){
     if(event) {
-      this.completed = !this.completed;
+      this.updateEmitter.emit(this.todo);
     }
   }
 
@@ -29,6 +28,5 @@ export class ToDoItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.changedStatus(this.isChecked);
   }
 }

@@ -7,25 +7,18 @@
         "id": "0fKNRcpNI5S0WKLin910B",
         "title": "Home",
         "color": "#640DF3"
-      }
+      },
+      "isCompleted": true
     },
     {
-      "id": "pMulxVCQ1aVMrG-axyZjP",
-      "task": "Test 3",
+      "id": "-Z6SttgavnlDkqFacEYa8",
+      "task": "Task 1",
       "label": {
-        "id": "eurn-L1Rw_8QjgARn1RJ-",
-        "title": "Other",
-        "color": "#4E02CC"
-      }
-    },
-    {
-      "id": "g72x6f6rJ7cEVWapPIcl-",
-      "task": "Test 4",
-      "label": {
-        "id": "eurn-L1Rw_8QjgARn1RJ-",
-        "title": "Other",
-        "color": "#4E02CC"
-      }
+        "id": "b_v_g1zs9H7WLYb4gwQxV",
+        "title": "Work",
+        "color": "#7B37EB"
+      },
+      "isCompleted": false
     }
   ],
   "labels": [

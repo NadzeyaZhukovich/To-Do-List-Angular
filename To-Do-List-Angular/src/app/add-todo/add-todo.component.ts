@@ -12,7 +12,7 @@ export class AddToDoComponent implements OnInit {
 
   private _labelList: Array<Label> = new Array<Label>();
   
-  toDo: ToDo = new ToDo(nanoid(), '', null);
+  toDo: ToDo = new ToDo(nanoid(), '', null, false);
 
   @Output() addEmitter = new EventEmitter<ToDo>();
   
@@ -53,6 +53,6 @@ export class AddToDoComponent implements OnInit {
 
   private cleanToDo() {
     const previousLabel: Label = this.toDo.label;
-    this.toDo = new ToDo(nanoid(), '', previousLabel);
+    this.toDo = new ToDo(nanoid(), '', previousLabel, false);
   }
 }
