@@ -2,7 +2,7 @@
     <input type="text" placeholder="Add task" class="addContainerElementInput" [(ngModel)]="toDo.task">
     <select class="addContainerElementSelect" (change)="onChange($event.target.value)">
     <!-- <select class="addContainerElementSelect" [ngModel]="selected" (ngModelChange)="onChange($event)"> -->
-        <option [value]="item" *ngFor="let item of labels" >{{item}}</option>
+        <option [value]="item.title" *ngFor="let item of labelList">{{item.title}}</option>
     </select>
     <button class="addContainerElementBtn" (click)="addTaskBtn()">Add</button>
 </div>

@@ -11,18 +11,28 @@ import { ToDoItemComponent } from './todo-item/todo-item.component';
 export class AppComponent {
   title = 'To-Do-List-Angular';
   TODOS_URL = 'http://localhost:3000/todos';
+  LABELS_URL = 'http://localhost:3000/labels';
  
   @Input() toDoLists = [];
+  @Input() labelList = [];
 
   addTask(todo: ToDo) {
-    this.insertToDoOnServer(this.TODOS_URL, todo)
-
+    this.insertToDoOnServer(this.TODOS_URL, todo);
   }
 
   fetchTodos(url) {
     fetch(url)
-    .then((response) => response.json())
-    .then((todos) => this.toDoLists = todos);
+      .then((response) => response.json())
+      .then((todos) => this.toDoLists = todos);    
+  }
+
+  fetchLabels(url) {
+    fetch(url)
+      .then((response) => response.json())
+      .then((labels) => {
+        this.labelList = labels;
+        console.log(this.labelList);
+      });    
   }
 
   insertToDoOnServer(url, todo: ToDo){
@@ -40,8 +50,6 @@ export class AppComponent {
 
   ngOnInit() {
     this.fetchTodos(this.TODOS_URL);
-    console.log(nanoid());
-    console.log(nanoid());
-    console.log(nanoid());
+    this.fetchLabels(this.LABELS_URL);
   }
 }

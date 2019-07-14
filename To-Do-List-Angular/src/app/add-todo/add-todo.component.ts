@@ -1,6 +1,8 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import * as nanoid from 'nanoid';
 import { ToDo } from '../model/ToDo';
+import { element } from 'protractor';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-todo',
@@ -9,10 +11,21 @@ import { ToDo } from '../model/ToDo';
 })
 export class AddToDoComponent implements OnInit {
 
-  labels = ['Select status','Work', 'Home', 'Hobby'];
+  private _labelList;
+  
+  toDo = new ToDo(nanoid(), '', null);
+
   @Output() addEmitter = new EventEmitter<ToDo>();
   
-  toDo = new ToDo(nanoid(), '', '');
+
+  @Input() 
+  set labelList(labels) {
+    this._labelList = labels;
+    this.toDo.label = this._labelList[0];
+  }
+  get labelList() {
+    return this._labelList;
+  }
 
   constructor() { }
 
@@ -21,8 +34,19 @@ export class AddToDoComponent implements OnInit {
     this.cleanToDo();
   }
 
+  findLabelByTitle(labelTitle, labelList){
+    let label = null;
+    labelList.forEach(element => {
+      if(labelTitle === element.title) {
+        label = element;
+        return label;
+      }
+    });
+    return label;
+  }
+
   onChange(selectedValue) {
-    return this.toDo.label = selectedValue;
+    return this.toDo.label = this.findLabelByTitle(selectedValue, this.labelList);
   }
 
   ngOnInit() {

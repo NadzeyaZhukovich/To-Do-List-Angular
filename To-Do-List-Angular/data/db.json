@@ -1,20 +1,48 @@
 {
   "todos": [
     {
-      "id": "NEXhvrRFaqJIaCk1tkBS6",
-      "task": "Test 1"
+      "id": "gy9D8W3FD59oxskXVD0zk",
+      "task": "Test 2",
+      "label": {
+        "id": "0fKNRcpNI5S0WKLin910B",
+        "title": "Home",
+        "color": "#640DF3"
+      }
     },
     {
-      "id": "oRLKEjLEm42dZVoEuXYQb",
-      "task": "Test 2"
+      "id": "pMulxVCQ1aVMrG-axyZjP",
+      "task": "Test 3",
+      "label": {
+        "id": "eurn-L1Rw_8QjgARn1RJ-",
+        "title": "Other",
+        "color": "#4E02CC"
+      }
     },
     {
-      "id": "ozgAVaAWcihF-HK7hjVHT",
-      "task": "Test 4"
+      "id": "g72x6f6rJ7cEVWapPIcl-",
+      "task": "Test 4",
+      "label": {
+        "id": "eurn-L1Rw_8QjgARn1RJ-",
+        "title": "Other",
+        "color": "#4E02CC"
+      }
+    }
+  ],
+  "labels": [
+    {
+      "id": "b_v_g1zs9H7WLYb4gwQxV",
+      "title": "Work",
+      "color": "#7B37EB"
     },
     {
-      "id": "08pCKIAowQ2J-dAyEi05C",
-      "task": "Test 5"
+      "id": "0fKNRcpNI5S0WKLin910B",
+      "title": "Home",
+      "color": "#640DF3"
+    },
+    {
+      "id": "eurn-L1Rw_8QjgARn1RJ-",
+      "title": "Other",
+      "color": "#4E02CC"
     }
   ]
 }
