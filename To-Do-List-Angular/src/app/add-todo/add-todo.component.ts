@@ -52,6 +52,7 @@ export class AddToDoComponent implements OnInit {
   }
 
   private cleanToDo() {
-    this.toDo = new ToDo(nanoid(), '', null);
+    const previousLabel: Label = this.toDo.label;
+    this.toDo = new ToDo(nanoid(), '', previousLabel);
   }
 }

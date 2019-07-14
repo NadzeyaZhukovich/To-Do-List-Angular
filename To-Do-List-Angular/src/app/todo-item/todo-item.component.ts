@@ -12,15 +12,8 @@ export class ToDoItemComponent implements OnInit {
   @Input() todo: ToDo;
   @Output() deleteEmitter = new EventEmitter<String>();
 
-  visibleLabel: boolean = false;
   completed: boolean = false;
   isChecked: boolean = false;
-
-  checkLabel(label: Label){
-    if(label) {
-      this.visibleLabel = true;
-    }
-  }
 
   changedStatus(event){
     if(event) {
@@ -36,7 +29,6 @@ export class ToDoItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.checkLabel(this.todo.label);
     this.changedStatus(this.isChecked);
   }
 }
