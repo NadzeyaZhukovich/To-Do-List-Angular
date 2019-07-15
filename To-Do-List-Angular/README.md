@@ -2,7 +2,7 @@
 This is an Angular application which allows you to work with notes.
 
 <p float="left">
-  <img src="/art/app-demo.png" />
+  <img src="./art/app-demo.png" height="400px"/>
 </p>
 
 ## Features:
