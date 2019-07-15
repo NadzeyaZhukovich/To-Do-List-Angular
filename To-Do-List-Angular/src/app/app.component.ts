@@ -9,7 +9,7 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'To-Do-List-Angular';
+  title = 'Notes';
 
   constructor(private dataService: DataService) {  }
 

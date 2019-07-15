@@ -1,18 +1,29 @@
 # ToDoListAngular
+This is an Angular application which allows you to work with notes.
+
+<p float="left">
+  <img src="/art/app-demo.png" />
+</p>
+
+## Features:
+* Add a note (text, label, status)
+* Delete note
+* Mark note as completed
+
+## Frameworks and Tools
+* TypeScript
+* Angular 8
+* RxJs
+* nanoid
+* json-server
 
 ## Configuration
 This project use `json-server` dependency which allows us to interact with `data/db.json` file.
 We can run it: `json-server --watch data/db.json`. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
@@ -25,7 +36,3 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
