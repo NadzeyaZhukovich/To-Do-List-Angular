@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ToDo } from '../model/ToDo';
 import { Label } from '../model/Label';
 
@@ -7,7 +7,7 @@ import { Label } from '../model/Label';
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.scss']
 })
-export class ToDoItemComponent implements OnInit {
+export class ToDoItemComponent {
   private _todo;
 
   @Input() todo: ToDo;
@@ -27,6 +27,4 @@ export class ToDoItemComponent implements OnInit {
     this.deleteEmitter.emit(this.todo.id);
   }
 
-  ngOnInit() {
-  }
 }

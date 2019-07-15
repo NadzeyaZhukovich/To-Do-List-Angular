@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import * as nanoid from 'nanoid';
 import { ToDo } from '../model/ToDo';
 import { Label } from '../model/Label';
@@ -8,7 +8,7 @@ import { Label } from '../model/Label';
   templateUrl: './add-todo.component.html',
   styleUrls: ['./add-todo.component.scss']
 })
-export class AddToDoComponent implements OnInit {
+export class AddToDoComponent {
 
   private _labelList: Array<Label> = new Array<Label>();
   
@@ -25,8 +25,6 @@ export class AddToDoComponent implements OnInit {
     this._labelList = labels;
     this.toDo.label = this._labelList.length > 0 ? this._labelList[0] : null;
   }
-  
-  constructor() { }
 
   addTaskBtn() {
     this.addEmitter.emit(this.toDo); 
@@ -35,9 +33,6 @@ export class AddToDoComponent implements OnInit {
 
   onLabelChanged(value: string) {
     return this.toDo.label = this.findLabelByTitle(value, this.labelList);
-  }
-
-  ngOnInit() {
   }
 
   private findLabelByTitle(labelTitle: string, labelList: Array<Label>){

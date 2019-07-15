@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ToDo } from '../model/ToDo';
 
 @Component({
@@ -6,7 +6,7 @@ import { ToDo } from '../model/ToDo';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class ToDoListComponent implements OnInit {
+export class ToDoListComponent {
 
   @Input() toDoList: Array<ToDo>;
   
@@ -42,8 +42,4 @@ export class ToDoListComponent implements OnInit {
       } 
     })
   }
-
-  ngOnInit() {
-  }
-
 }
