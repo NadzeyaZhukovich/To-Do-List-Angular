@@ -1,6 +1,18 @@
 <div class="task">
-    <input type="checkbox" class="taskCheckbox" [(ngModel)]="todo.isCompleted" (change)="changedCompleteStatus($event)">
-    <span class="taskLabel" [ngStyle]="{background: todo.label.color}">{{todo.label.title}}</span>
-    <p class="taskText" [class.completedTask]="todo.isCompleted">{{todo.task}}</p>
-    <button class="taskDelete" (click)="deleteTaskBtn()">Delete</button>
+    <input type="checkbox" 
+            class="taskCheckbox" 
+            [(ngModel)]="todo.isCompleted"
+            (change)="changedCompleteStatus($event)">
+    <span class="taskLabel" 
+            [ngStyle]="{background: todo.label.color}">
+            {{todo.label.title}}
+    </span>
+    <p class="taskText" 
+        [class.completedTask]="todo.isCompleted">
+        {{todo.task}}
+    </p>
+    <button class="taskDelete" 
+            (click)="deleteTaskBtn()">
+            Delete
+    </button>
 </div>

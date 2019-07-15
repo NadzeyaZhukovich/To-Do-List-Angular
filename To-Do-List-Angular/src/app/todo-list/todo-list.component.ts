@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ToDo } from '../model/ToDo';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,36 +11,38 @@ export class ToDoListComponent {
 
   @Input() toDoList: Array<ToDo>;
   
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
-  deleteToDo(id: String) {
-    fetch('http://localhost:3000/todos' + '/' + id, {method: 'DELETE'})
-      .then((response) => {
-        if(response.status === 200) {
-          let index = -1;
-          for (let i = 0; i < this.toDoList.length; i++) {
-            if (this.toDoList[i].id === id) {
-              index = i;
-            }
-          }
-          
-          if (index > -1) {
-            this.toDoList.splice(index, 1);
-          }
-        }
-      });
+  deleteToDo(todo: ToDo) {
+    this.dataService.deleteToDo(todo)
+      .subscribe(
+        _ => this.deleteTodoFromArray(this.toDoList, todo),
+        error => this.handleError(error)
+      )
   }
 
   updateToDo(todo: ToDo) {
-    fetch('http://localhost:3000/todos' + '/' + todo.id, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(todo)
-    })
-    .then(response => {
-      if(response.status !== 200) {
-        console.log("Error: PATCH => " + todo.id);
-      } 
-    })
+    this.dataService.updateToDo(todo)
+      .subscribe(
+        _ => { },
+        error => this.handleError(error)
+      )
+  }
+  
+  private deleteTodoFromArray(array: Array<ToDo>, todo: ToDo) {
+    let index = -1;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].id === todo.id) {
+        index = i;
+      }
+    }
+    
+    if (index > -1) {
+      array.splice(index, 1);
+    }
+  } 
+
+  private handleError(error) {
+    console.log(error);
   }
 }

@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ToDo } from '../model/ToDo';
-import { Label } from '../model/Label';
 
 @Component({
   selector: 'app-todo-item',
@@ -8,10 +7,9 @@ import { Label } from '../model/Label';
   styleUrls: ['./todo-item.component.scss']
 })
 export class ToDoItemComponent {
-  private _todo;
 
   @Input() todo: ToDo;
-  @Output() deleteEmitter = new EventEmitter<String>();
+  @Output() deleteEmitter = new EventEmitter<ToDo>();
   @Output() updateEmitter = new EventEmitter<ToDo>();
 
   changedCompleteStatus(event){
@@ -24,7 +22,6 @@ export class ToDoItemComponent {
   }
 
   deleteTaskBtn() {
-    this.deleteEmitter.emit(this.todo.id);
+    this.deleteEmitter.emit(this.todo);
   }
-
 }

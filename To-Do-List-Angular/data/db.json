@@ -8,17 +8,27 @@
         "title": "Home",
         "color": "#640DF3"
       },
-      "isCompleted": true
+      "isCompleted": false
     },
     {
-      "id": "-Z6SttgavnlDkqFacEYa8",
-      "task": "Task 1",
+      "id": "ilkHyOoSrba2nH9EeCJHa",
+      "task": "Test 1",
+      "label": {
+        "id": "eurn-L1Rw_8QjgARn1RJ-",
+        "title": "Other",
+        "color": "#4E02CC"
+      },
+      "isCompleted": false
+    },
+    {
+      "id": "16uzP9XcNJ7hlHR6SDo19",
+      "task": "kozachka",
       "label": {
         "id": "b_v_g1zs9H7WLYb4gwQxV",
         "title": "Work",
         "color": "#7B37EB"
       },
-      "isCompleted": false
+      "isCompleted": true
     }
   ],
   "labels": [

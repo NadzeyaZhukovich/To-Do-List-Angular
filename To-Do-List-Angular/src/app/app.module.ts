@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { ToDoListComponent } from './todo-list/todo-list.component';
 import { ToDoItemComponent } from './todo-item/todo-item.component';
 import { AddToDoComponent } from './add-todo/add-todo.component';
+import { DataService } from './data.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,10 @@ import { AddToDoComponent } from './add-todo/add-todo.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
