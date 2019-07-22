@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { ToDo } from './model/ToDo';
-import { Label } from './model/Label';
+import { Component, Input, OnInit } from '@angular/core';
+import { ToDo } from './model/toDo';
+import { Label } from './model/label';
 import { DataService } from './data.service';
 
 @Component({
@@ -8,13 +8,13 @@ import { DataService } from './data.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Notes';
 
   constructor(private dataService: DataService) {  }
 
-  @Input() toDoLists: Array<ToDo> = new Array<ToDo>();
-  @Input() labelList: Array<Label> = new Array<Label>();
+  @Input() toDoLists: ToDo[] = [];
+  @Input() labelList: Label[] = [];
 
   addTask(todo: ToDo) {
     this.dataService.addToDo(todo)

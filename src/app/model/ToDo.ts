@@ -1,15 +1,8 @@
-import { Label } from './Label';
+import { Label } from './label';
 
-export class ToDo {
-    id: String;
-    task: String;
+export interface ToDo {
+    id: string;
+    task: string;
     label: Label;
-    isCompleted: Boolean;
-
-    constructor(id: String, task: String, label: Label, isCompleted: Boolean) {
-        this.id = id;
-        this.task = task;
-        this.label = label;
-        this.isCompleted = isCompleted;
-    }
+    isCompleted: boolean;
 }

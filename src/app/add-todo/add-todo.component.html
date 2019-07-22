@@ -1,16 +1,16 @@
 <div class="addContainer">
     <input type="text" 
             placeholder="Add task"
-            class="addContainerElementInput"
-            [(ngModel)]="toDo.task">
-    <select class="addContainerElementSelect"
-            (change)="onLabelChanged($event.target.value)">
-        <option [value]="item.title" 
+            class="addContainerElement addContainerElementInput"
+            [(ngModel)]="task">
+    <select class="addContainerElement addContainerElementSelect"
+            [(ngModel)]="label">
+        <option [ngValue]="item"
                 *ngFor="let item of labelList">
                 {{item.title}}
         </option>
     </select>
-    <button class="addContainerElementBtn" 
+    <button class="addContainerElement addContainerElementBtn" 
             (click)="addTaskBtn()">
             Add
     </button>

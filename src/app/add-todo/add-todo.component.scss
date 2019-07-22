@@ -10,35 +10,24 @@ $backGround-color-white: rgb(255, 255, 255);
     box-shadow: 0 0 2px rgba(0,0,0,0.2);
 
     &Element{
-        //Why when I endure these elements they do not work?
-        // font-size: 90%;
-        // color: $fonts-color;
-        // padding: 5px 10px;
-        // outline: none;
-        // text-transform: capitalize;
+        font-size: 90%;
+        color: $fonts-color;
+        padding: 5px 10px;
+        outline: none;
+        text-transform: capitalize;
         
         &Input{
             width: 500px;
             height: 25px;
-            padding: 5px 10px;
-            outline: none;
-            font-size: 90%;
-            text-transform: capitalize;
             border-style: none;
             transition: none;
-            color: $fonts-color;
         }
 
         &Select{
             border-style: none;
             border-radius: 0px;
             height: 35px;
-            padding: 5px 10px;
-            font-size: 90%;
-            text-transform: capitalize;
-            -webkit-appearance: none;
             background-color: $backGround-color-white; 
-            color: $fonts-color;
             border-left: 1px solid $fonts-color;
         }
     
@@ -50,11 +39,6 @@ $backGround-color-white: rgb(255, 255, 255);
         &Btn{
             border-style: none;
             height: 35px;
-            padding: 5px 10px;
-            outline: none;
-            font-size: 90%;
-            text-transform: capitalize;
-            color: $fonts-color;
             border-left: 1px solid $fonts-color;
         }
     
