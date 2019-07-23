@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
 import * as nanoid from 'nanoid';
-import { ToDo } from '../model/ToDo';
-import { Label } from '../model/Label';
+import { ToDo } from '../model/toDo';
+import { Label } from '../model/label';
 
 @Component({
   selector: 'app-add-todo',
@@ -10,10 +10,11 @@ import { Label } from '../model/Label';
 })
 export class AddToDoComponent {
 
-  private _labelList: Array<Label> = new Array<Label>();
-  
-  toDo: ToDo = new ToDo(nanoid(), '', null, false);
+  private _labelList: Label[] = [];
 
+  label: Label;
+  task: string;
+  
   @Output() addEmitter = new EventEmitter<ToDo>();
   
   get labelList() {
@@ -21,21 +22,27 @@ export class AddToDoComponent {
   }
 
   @Input() 
-  set labelList(labels: Array<Label>) {
+  set labelList(labels: Label[]) {
     this._labelList = labels;
-    this.toDo.label = this._labelList.length > 0 ? this._labelList[0] : null;
+    this.label = this._labelList[0];
   }
 
   addTaskBtn() {
-    this.addEmitter.emit(this.toDo); 
+    const todo = {
+      id: nanoid(),
+      task: this.task,
+      label: this.label,
+      isCompleted: false} as ToDo;
+    this.addEmitter.emit(todo);
+
     this.cleanToDo();
-  }
-
+    }
+  
   onLabelChanged(value: string) {
-    return this.toDo.label = this.findLabelByTitle(value, this.labelList);
+    return this.label = this.findLabelByTitle(value, this.labelList);
   }
 
-  private findLabelByTitle(labelTitle: string, labelList: Array<Label>){
+  private findLabelByTitle(labelTitle: string, labelList: Label[]){
     let label = null;
     labelList.forEach(element => {
       if(labelTitle === element.title) {
@@ -47,7 +54,7 @@ export class AddToDoComponent {
   }
 
   private cleanToDo() {
-    const previousLabel: Label = this.toDo.label;
-    this.toDo = new ToDo(nanoid(), '', previousLabel, false);
+    this.task = '';
   }
+
 }
