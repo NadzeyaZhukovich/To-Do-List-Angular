@@ -9,26 +9,6 @@
         "color": "#640DF3"
       },
       "isCompleted": true
-    },
-    {
-      "id": "CHwlwpVSRnl-H23eWFD2D",
-      "task": "visit gym",
-      "label": {
-        "id": "eurn-L1Rw_8QjgARn1RJ-",
-        "title": "Other",
-        "color": "#4E02CC"
-      },
-      "isCompleted": false
-    },
-    {
-      "id": "SuhMON3gEV19uKm3_O6ba",
-      "task": "do something ",
-      "label": {
-        "id": "b_v_g1zs9H7WLYb4gwQxV",
-        "title": "Work",
-        "color": "#7B37EB"
-      },
-      "isCompleted": true
     }
   ],
   "labels": [

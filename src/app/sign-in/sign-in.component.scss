@@ -1,0 +1,54 @@
+.logScreen{
+    width: 350px;
+    height: auto;
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 30px;
+    color: #2C0173;
+
+    &Title{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    &Text{
+        font-size: 65%
+    }
+
+    &Input{
+        margin-top: 5px;
+        margin-bottom: 15px;
+        width: 300px;
+        height: 35px;
+        border-style: none;
+        border: 1px solid #2C0173; 
+    }
+
+    .btn{
+        display: inline-block;
+        padding: 5px;
+        margin: 10px 0; 
+        border-style: none;
+        border: 2px solid #2C0173; 
+        font-size: 80%;
+    }
+
+    .singInBtn{
+        margin-right: 30px;
+        background-color: #2C0173;
+        color: #fff;
+    }
+
+    .singInBtn:hover,
+    .singInBtn:active{
+        background-color: #190140;
+        border-color: #190140;
+    }
+
+    .singUpBtn:hover,
+    .singUpBtn:active{
+        color: #fff;
+        background-color: #190140;
+        border-color: #190140;
+    }
+}

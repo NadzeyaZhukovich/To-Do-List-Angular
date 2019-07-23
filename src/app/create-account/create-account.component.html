@@ -1,0 +1,27 @@
+<div class="logScreen">
+    <h4 class="logScreenTitle">Login to your account</h4>
+    <form>
+        <p class="logScreenText">Full name</p>
+        <input class="logScreenInput"
+                type="text" 
+                name="full name">
+        <p class="logScreenText">User name</p>
+        <input class="logScreenInput" 
+                type="text" 
+                name="user name">
+        <p class="logScreenText">Password</p>
+        <input class="logScreenInput" 
+                type="password" 
+                name="password">
+    </form>
+    <button class="btn singInBtn" 
+            type="button"
+            (click)="singInClick()">
+            Sing in
+    </button>
+    <button class="btn singUpBtn" 
+            type="button"
+            (click)="createAccountClick()">
+            Create account
+    </button>
+</div>

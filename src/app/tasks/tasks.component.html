@@ -1,0 +1,6 @@
+<div class="container">
+    <app-add-todo [labelList]="labelList" 
+                    (addEmitter)="addTask($event)">
+    </app-add-todo>
+    <app-todo-list [toDoList]="toDoLists"></app-todo-list>
+</div>
