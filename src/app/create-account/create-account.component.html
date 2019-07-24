@@ -1,30 +1,27 @@
 <div class="logScreen">
     <h4 class="logScreenTitle">Login to your account</h4>
-    <form>
+    <form [formGroup]="form" (ngSubmit)="createAccountClick()">
         <p class="logScreenText">Full name</p>
         <input class="logScreenInput"
                 type="text" 
-                name="full name"
-                #fullName>
+                formControlName= "fullname">
         <p class="logScreenText">User name</p>
         <input class="logScreenInput" 
                 type="text" 
-                name="user name"
-                #userName>
+                formControlName= "username">
         <p class="logScreenText">Password</p>
         <input class="logScreenInput" 
                 type="password" 
-                name="password"
-                #password>
-    </form>
+                formControlName= "password">
+  
     <button class="btn singInBtn" 
             type="button"
             (click)="singInClick()">
             Sing in
     </button>
     <button class="btn singUpBtn" 
-            type="button"
-            (click)="createAccountClick()">
+            type="submit">
             Create account
-    </button>
+    </button> 
+ </form>
 </div>

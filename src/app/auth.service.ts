@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Response } from './model/response';
+import { User } from './model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +15,11 @@ export class AuthService {
   private userApi = `${this.baseApi}/users`;
   private sessionsApi = `${this.baseApi}/sessions`;
 
-  createAccount(fullName: string, userName: string, password: string): Observable<Response> {
-    const body = {
-      "fullname": fullName,
-      "username": userName,
-      "password": password
-    }
-    return this.http.post<Response>(this.userApi, body);
+    createAccount(user: User): Observable<Response> { 
+      return this.http.post<Response>(this.userApi, user);
   }
 
-  signIn(userName: string, password: string) {
-    const body = {
-      "username": userName,
-      "password": password
-    }
-    return this.http.post<Response>(this.sessionsApi, body);
+    signIn(user: User) {
+      return this.http.post<Response>(this.sessionsApi, user);
   }
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ToDoListComponent } from './todo-list/todo-list.component';
@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 
 const appRoutes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login',component: LoginComponent,
   children: [
     {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],

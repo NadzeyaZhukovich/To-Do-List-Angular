@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Response } from '../model/response';
-// import { Response } from 'selenium-webdriver/http';
+import { FormBuilder } from '@angular/forms';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,24 +12,24 @@ import { Response } from '../model/response';
 })
 export class SignInComponent implements OnInit {
 
-  @ViewChild('userName', {static: false}) userName: ElementRef;
-  @ViewChild('password', {static: false}) password: ElementRef;
+  form = this.fb.group({
+    username: [''],
+    password: ['']
+  }); 
   
   constructor(private router: Router,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private fb: FormBuilder) { }
 
   ngOnInit() {
   }
 
   singInClick() {
-    const userName = this.userName.nativeElement.value;
-    const password = this.password.nativeElement.value;
-    this.authService.signIn(userName, password)
+    this.authService.signIn(this.form.value as User)
       .subscribe(
         response => this.handelSignInResponse(response),
         error => console.log(error)
       )
-    // this.router.navigateByUrl('/tasks');
   }
 
   createAccountClick() {
