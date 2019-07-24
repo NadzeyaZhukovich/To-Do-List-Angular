@@ -9,6 +9,11 @@ $backGround-color-white: rgb(255, 255, 255);
     background-color: $backGround-color-blue;
     box-shadow: 0 0 2px rgba(0,0,0,0.2);
 
+    &LogOutBtn{
+        display: flex;
+        align-content: flex-end;
+    }
+
     &Element{
         font-size: 90%;
         color: $fonts-color;

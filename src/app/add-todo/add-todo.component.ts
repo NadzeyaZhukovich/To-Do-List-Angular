@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
 import * as nanoid from 'nanoid';
 import { ToDo } from '../model/toDo';
 import { Label } from '../model/label';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-todo',
@@ -17,6 +18,8 @@ export class AddToDoComponent {
   
   @Output() addEmitter = new EventEmitter<ToDo>();
   
+  constructor(private router: Router) { }
+
   get labelList() {
     return this._labelList;
   }
@@ -40,6 +43,10 @@ export class AddToDoComponent {
   
   onLabelChanged(value: string) {
     return this.label = this.findLabelByTitle(value, this.labelList);
+  }
+
+  logOutBtn() {
+    this.router.navigateByUrl('/login/sign-in');
   }
 
   private findLabelByTitle(labelTitle: string, labelList: Label[]){
