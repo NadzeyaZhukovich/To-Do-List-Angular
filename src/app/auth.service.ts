@@ -19,7 +19,7 @@ export class AuthService {
       return this.http.post<Response>(this.userApi, user);
   }
 
-    signIn(user: User) {
+    signIn(user: User): Observable<Response>  {
       return this.http.post<Response>(this.sessionsApi, user);
   }
 }
