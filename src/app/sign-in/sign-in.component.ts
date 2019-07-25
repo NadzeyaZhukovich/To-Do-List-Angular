@@ -23,13 +23,12 @@ export class SignInComponent implements OnInit {
               private fb: FormBuilder,
               private localStorageService: LocalStorageService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   singInClick() {
     this.authService.signIn(this.form.value as User)
       .subscribe(
-        response => this.handelSignInResponse(response),
+        response => this.handleSignInResponse(response),
         error => console.log(error)
       )
   }
@@ -38,11 +37,12 @@ export class SignInComponent implements OnInit {
     this.router.navigateByUrl('/login/create-account');
   }
 
-  private handelSignInResponse(response: Response) {
-    if (response.statusCode === 201) {
-      this.router.navigateByUrl('/tasks');
-    }
-    this.localStorageService.set('key', response.data.access_token);
+  private handleSignInResponse(response: Response) {
+    this.localStorageService.set('session_id', response.data.session_id);
+    this.localStorageService.set('access_token', response.data.access_token);
+    this.localStorageService.set('refresh_token', response.data.refresh_token);
+    
+    this.router.navigateByUrl('/tasks');
   }
 }
 

@@ -3,6 +3,8 @@ import * as nanoid from 'nanoid';
 import { ToDo } from '../model/toDo';
 import { Label } from '../model/label';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../local-storage.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-add-todo',
@@ -18,7 +20,9 @@ export class AddToDoComponent {
   
   @Output() addEmitter = new EventEmitter<ToDo>();
   
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private localStorageService: LocalStorageService,
+              private auth: AuthService) { }
 
   get labelList() {
     return this._labelList;
@@ -46,7 +50,14 @@ export class AddToDoComponent {
   }
 
   logOutBtn() {
-    this.router.navigateByUrl('/login/sign-in');
+    this.auth.logOut()
+      .subscribe(
+        _ => {
+          this.localStorageService.clear();
+          this.router.navigateByUrl('/login/sign-in');
+        },
+        error => console.log(error)
+      )
   }
 
   private findLabelByTitle(labelTitle: string, labelList: Label[]){

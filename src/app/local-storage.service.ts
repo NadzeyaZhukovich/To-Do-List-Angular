@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class LocalStorageService {
 
+  constructor() { }
+
   get(key: string, fallback: any) {
     let value = localStorage.getItem(key);
     return (value) ? JSON.parse(value) : fallback;
@@ -13,5 +15,8 @@ export class LocalStorageService {
   set(key: string, value: any) {
     localStorage.setItem(key, JSON.stringify(value));
   }
-  constructor() { }
+  
+  clear() {
+    localStorage.clear();
+  }
 }

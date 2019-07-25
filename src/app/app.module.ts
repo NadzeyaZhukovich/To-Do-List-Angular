@@ -8,12 +8,14 @@ import { ToDoItemComponent } from './todo-item/todo-item.component';
 import { AddToDoComponent } from './add-todo/add-todo.component';
 import { DataService } from './data.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Routes, RouterModule} from '@angular/router';
+import { Routes, RouterModule, CanActivate} from '@angular/router';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
+import { LocalStorageService } from './local-storage.service';
+import { AuthGuardService } from './auth-guard.service';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -24,7 +26,7 @@ const appRoutes: Routes = [
     {path: 'create-account', component: CreateAccountComponent},
   ]
   },
-  {path: 'tasks', component: TasksComponent}
+  {path: 'tasks', component: TasksComponent, canActivate: [AuthGuardService]}
 ]
 
 @NgModule({
@@ -45,7 +47,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [DataService, AuthService],
+  providers: [DataService, AuthService, LocalStorageService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
