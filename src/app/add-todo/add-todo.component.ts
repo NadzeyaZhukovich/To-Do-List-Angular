@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
-import { ToDo } from '../model/ToDo';
+import { ToDo } from '../model/toDo';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../local-storage.service';
 import { AuthService } from '../auth.service';

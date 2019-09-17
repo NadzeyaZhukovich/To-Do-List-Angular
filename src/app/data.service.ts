@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ToDo } from './model/ToDo';
+import { ToDo } from './model/toDo';
 import { LocalStorageService } from './local-storage.service';
 import { TaskResponse } from './model/response';
 

@@ -1,9 +1,7 @@
 <div class="toDoList" *ngFor="let todo of toDoList" >
     <app-todo-item 
         [todo]="todo" 
-        (deleteEmitter)="deleteTask($event)" 
-        (updateEmitter)="updateTask($event)">
+        (deleteEmitter)="deleteItem.emit($event)" 
+        (updateEmitter)="changeItem.emit($event)">
     </app-todo-item>
 </div>
-
- 

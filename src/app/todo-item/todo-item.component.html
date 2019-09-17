@@ -2,13 +2,14 @@
     <input type="checkbox" 
             class="taskCheckbox" 
             [checked]="todo.completed === 'Y' ? true : false"
-            (change)="changedCompleteStatus($event)">
+            (change)="changedCompleteStatus($event.target.checked)"
+            >
     <p class="taskText" 
         [class.completedTask]="todo.completed === 'Y' ? true : false">
         {{todo.title}}
     </p>
     <button class="taskDelete" 
-            (click)="deleteTaskBtn()">
+            (click)="deleteEmitter.emit(this.todo)">
             Delete
     </button>
 </div>

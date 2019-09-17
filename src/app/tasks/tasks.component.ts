@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ToDo } from '../model/ToDo';
+import { ToDo } from '../model/toDo';
 import { DataService } from '../data.service'; 
 
 @Component({
@@ -27,9 +27,22 @@ export class TasksComponent implements OnInit {
       )
   }
 
-  ngOnInit() {
-    console.log('init');
-    this.fetchToDo();
+  deleteTask(todo: ToDo) {
+    console.log('delete:', todo);
+    this.dataService.deleteTask(todo)
+      .subscribe(
+        _ => this.toDoLists = this.deleteTodoFromArray(this.toDoLists, todo),
+        error => this.handleError(error)
+      )
+  }
+
+  updateTask(todo: ToDo) {
+    this.dataService.updateTask(todo)
+    .subscribe(
+        {
+          error: this.handleError
+        }
+      );
   }
 
   fetchToDo() {
@@ -41,7 +54,15 @@ export class TasksComponent implements OnInit {
       );
   }
 
+  ngOnInit() {
+    this.fetchToDo();
+  }
+
   private handleError(error) {
     console.log(error);
-  }  
+  } 
+  
+  private deleteTodoFromArray(array: ToDo[], todo: ToDo) : ToDo[] {
+    return array.filter(e => e.id !== todo.id);
+  }
 }
