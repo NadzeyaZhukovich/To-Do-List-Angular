@@ -7,9 +7,9 @@ export class LocalStorageService {
 
   constructor() { }
 
-  get(key: string, fallback: any) {
+  get(key: string) {
     let value = localStorage.getItem(key);
-    return (value) ? JSON.parse(value) : fallback;
+    return value ? JSON.parse(value) : null;
   }
 
   set(key: string, value: any) {

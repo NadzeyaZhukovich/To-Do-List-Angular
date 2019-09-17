@@ -1,19 +1,13 @@
 <div class="addContainer">
         <button class="addContainerLogOutBtn"
                 (click)="logOutBtn()">Log out</button>
-    <input type="text" 
+        <input type="text" 
             placeholder="Add task"
             class="addContainerElement addContainerElementInput"
             [(ngModel)]="task">
-    <select class="addContainerElement addContainerElementSelect"
-            [(ngModel)]="label">
-        <option [ngValue]="item"
-                *ngFor="let item of labelList">
-                {{item.title}}
-        </option>
-    </select>
-    <button class="addContainerElement addContainerElementBtn" 
+        <button class="addContainerElement addContainerElementBtn" 
             (click)="addTaskBtn()">
             Add
-    </button>
+        </button>
 </div>
+ 

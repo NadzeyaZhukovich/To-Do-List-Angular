@@ -1,15 +1,11 @@
 <div class="task">
     <input type="checkbox" 
             class="taskCheckbox" 
-            [(ngModel)]="todo.isCompleted"
+            [checked]="todo.completed === 'Y' ? true : false"
             (change)="changedCompleteStatus($event)">
-    <span class="taskLabel" 
-            [ngStyle]="{background: todo.label.color}">
-            {{todo.label.title}}
-    </span>
     <p class="taskText" 
-        [class.completedTask]="todo.isCompleted">
-        {{todo.task}}
+        [class.completedTask]="todo.completed === 'Y' ? true : false">
+        {{todo.title}}
     </p>
     <button class="taskDelete" 
             (click)="deleteTaskBtn()">

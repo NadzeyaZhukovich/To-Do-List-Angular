@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ToDo } from '../model/toDo';
+import { ToDo2 } from '../model/toDo2';
 import { DataService } from '../data.service';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,20 +9,26 @@ import { element } from 'protractor';
 })
 export class ToDoListComponent {
 
-  @Input() toDoList: ToDo[];
+  @Input() toDoList: ToDo2[];
   
   constructor(private dataService: DataService) { }
 
-  deleteToDo(todo: ToDo) {
-    this.dataService.deleteToDo(todo)
+  deleteTask(todo: ToDo2) {
+    this.dataService.deleteTask(todo)
       .subscribe(
         _ => this.toDoList = this.deleteTodoFromArray(this.toDoList, todo),
         error => this.handleError(error)
       )
   }
 
-  updateToDo(todo: ToDo) {
-    this.dataService.updateToDo(todo)
+  updateTask(todo: ToDo2) {
+    if(todo.completed === 'Y') {
+      todo.completed = 'N';
+    } else {
+      todo.completed = 'Y';
+    }
+    console.log('patch', todo);
+    this.dataService.updateTask(todo)
     .subscribe(
         {
           error: this.handleError
@@ -31,7 +36,7 @@ export class ToDoListComponent {
       );
   }
 
-  private deleteTodoFromArray(array: ToDo[], todo: ToDo) : ToDo[] {
+  private deleteTodoFromArray(array: ToDo2[], todo: ToDo2) : ToDo2[] {
     return array.filter(e => e.id !== todo.id);
   }
 

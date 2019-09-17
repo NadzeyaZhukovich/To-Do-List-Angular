@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient,
               private localStorage: LocalStorageService) { }
 
-  private baseApi = 'https://api.tasks.alexzh.com/v1';
+  private baseApi = 'https://cors-anywhere.herokuapp.com/https://api.tasks.alexzh.com/v1';
   private userApi = `${this.baseApi}/users`;
   private sessionsApi = `${this.baseApi}/sessions`;
 
@@ -26,9 +26,11 @@ export class AuthService {
   }
 
   logOut(): Observable<Response> {
-    const sessionId = this.localStorage.get('session_id', 0);
-    const accessToken = this.localStorage.get('access_token', 0);
-    return this.http.delete<Response>(`${this.sessionsApi}/${sessionId}`, 
-                                      { headers: {'Authorization' : accessToken} });
+    const sessionId = this.localStorage.get('session_id');
+    const accessToken = this.localStorage.get('access_token');
+    return this.http.delete<Response>(
+      `${this.sessionsApi}/${sessionId}`, 
+      { headers: {'Authorization' : accessToken} }
+    );
   } 
 }

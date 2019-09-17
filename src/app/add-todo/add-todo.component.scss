@@ -1,7 +1,9 @@
-$fonts-color: #2C0173;
-$backGround-color-blue: rgb(79, 2, 204);
-$backGround-color-hover-btn: #2C0173;
+$fonts-color: #000000;
+// $backGround-color-blue: rgb(79, 2, 204);
+$backGround-color-blue: #E36588;
+$backGround-color-hover-btn: #99EDCC;
 $backGround-color-white: rgb(255, 255, 255);
+$backGround-color-grew: rgb(225, 225, 255);
 
 .addContainer{
     padding: 60px 0;
@@ -10,10 +12,14 @@ $backGround-color-white: rgb(255, 255, 255);
     box-shadow: 0 0 2px rgba(0,0,0,0.2);
 
     &LogOutBtn{
-        display: flex;
-        align-content: flex-end;
+       padding: 5px;
+       font-size: 60%;
+       border: none;
+       background-color: $backGround-color-white;
     }
-
+    :hover {
+        background-color: $backGround-color-hover-btn;
+    }
     &Element{
         font-size: 90%;
         color: $fonts-color;

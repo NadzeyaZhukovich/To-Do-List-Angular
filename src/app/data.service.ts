@@ -1,38 +1,56 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ToDo } from './model/toDo';
-import { Label } from './model/label';
+import { ToDo2 } from './model/toDo2';
+import { LocalStorageService } from './local-storage.service';
+import { TaskResponse } from './model/response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  baseApiUrl = 'http://localhost:3000';
-  todosApiService = `${this.baseApiUrl}/todos`;
-  labelsApiService = `${this.baseApiUrl}/labels`;
+  baseUrl = 'https://cors-anywhere.herokuapp.com/https://alexzh.com/api/tasks/v1';
+  tasksUrl = `${this.baseUrl}/tasks`;
+  headers = { headers: this.generateAuthorizationHeader() };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private localStorage: LocalStorageService) { }
 
-  getLabels(): Observable<Label[]> {
-    return this.http.get<Label[]>(this.labelsApiService);
+  getTasks(): Observable<TaskResponse> {
+    return this.http.get<TaskResponse>(
+      this.tasksUrl, 
+      this.headers
+    );
   }
 
-  getToDos(): Observable<ToDo[]> {
-    return this.http.get<ToDo[]>(this.todosApiService);
+  addTask(todo: ToDo2): Observable<TaskResponse> {
+    return this.http.post<TaskResponse>(
+      this.tasksUrl, 
+      todo,
+      this.headers
+    );
   }
 
-  addToDo(todo: ToDo): Observable<ToDo> {
-    return this.http.post<ToDo>(this.todosApiService, todo);
+  deleteTask(todo: ToDo2): Observable<null> {
+    const url = `${this.tasksUrl}/${todo.id}`;
+    return this.http.delete<null>(
+      url,
+      this.headers
+    );
   }
 
-  deleteToDo(todo: ToDo): Observable<null> {
-    const url = `${this.todosApiService}/${todo.id}`;
-    return this.http.delete<null>(url);
-  }
+  updateTask(todo: ToDo2): Observable<TaskResponse> {
+    const url = `${this.tasksUrl}/${todo.id}`;
+    const body = { completed : todo.completed };
+    return this.http.patch<TaskResponse>(
+      url,
+      body, 
+      this.headers
+    );
+  } 
 
-  updateToDo(todo: ToDo) {
-    const url = `${this.todosApiService}/${todo.id}`;
-    return this.http.patch<ToDo>(url, todo);
+  private generateAuthorizationHeader(): HttpHeaders {
+    const accessToken = this.localStorage.get('access_token');
+    return new HttpHeaders().set('Authorization', accessToken)
   }
 }

@@ -1,8 +1,22 @@
+import { ToDo2 } from './toDo2';
+
 export interface Response {
    statusCode: number;
    success: boolean;
    messages: string[];
    data: Data; 
+}
+
+export interface TaskResponse {
+   statusCode: number;
+   success: boolean;
+   messages: string[];
+   data: TaskData; 
+}
+
+export interface TaskData {
+   row_returned: number,
+   tasks: ToDo2[];
 }
 
 interface Data {

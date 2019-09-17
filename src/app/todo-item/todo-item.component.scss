@@ -32,13 +32,6 @@ $white-color: #fff;
         text-decoration: line-through;
     }
 
-    &Label{
-        margin-right: 10px;
-        padding: 5px;
-        background-color: $violet-color;
-        color: rgb(255, 255, 255);
-    }
-
     &Delete{
         flex-basis: 10%;
         font-size: 90%;

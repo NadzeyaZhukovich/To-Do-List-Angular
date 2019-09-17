@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ToDo } from '../model/toDo';
-import { Label } from '../model/label';
+import { ToDo2 } from '../model/toDo2';
 import { DataService } from '../data.service'; 
 
 @Component({
@@ -12,39 +11,39 @@ export class TasksComponent implements OnInit {
 
   constructor(private dataService: DataService) {  }
 
-  @Input() toDoLists: ToDo[] = [];
-  @Input() labelList: Label[] = [];
+  toDoLists: ToDo2[] = [];
 
-  addTask(todo: ToDo) {
-    this.dataService.addToDo(todo)
+  addTask(todo: ToDo2) {
+    this.dataService.addTask(todo)
       .subscribe(
-        data => this.toDoLists.push(data),
+        data => {
+          if(data.success) {
+            this.toDoLists.push(data.data.tasks[0])
+          } else {
+            console.log('error:', data.messages);
+          }
+        },
         error => this.handleError(error)
       )
   }
 
   ngOnInit() {
-    this.fetchToDos();
-    this.fetchLabels();
+    console.log('init');
+    this.fetchToDo2();
   }
 
-  private fetchToDos() {
-    this.dataService.getToDos()
-    .subscribe(
-      data => this.toDoLists = data,
-      error => this.handleError(error)
-    );
-  }
-
-  private fetchLabels() {
-    this.dataService.getLabels()
-    .subscribe(
-      labels => this.labelList = labels,
-      error => this.handleError(error)
-    );
+  fetchToDo2() {
+    this.dataService.getTasks() 
+      .subscribe( 
+        taskResponse => {
+          console.log(taskResponse.data);
+          this.toDoLists = taskResponse.data.tasks;
+        },
+        error =>this.handleError(error)
+      );
   }
 
   private handleError(error) {
     console.log(error);
-  }
+  }  
 }
