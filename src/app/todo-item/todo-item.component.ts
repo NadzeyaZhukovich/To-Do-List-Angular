@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ToDo2 } from '../model/toDo2';
+import { ToDo } from '../model/ToDo';
 
 @Component({
   selector: 'app-todo-item', 
@@ -8,9 +8,9 @@ import { ToDo2 } from '../model/toDo2';
 })
 export class ToDoItemComponent {
 
-  @Input() todo: ToDo2;
-  @Output() deleteEmitter = new EventEmitter<ToDo2>();
-  @Output() updateEmitter = new EventEmitter<ToDo2>();
+  @Input() todo: ToDo;
+  @Output() deleteEmitter = new EventEmitter<ToDo>();
+  @Output() updateEmitter = new EventEmitter<ToDo>();
 
   changedCompleteStatus(){
     this.updateEmitter.emit(this.todo);

@@ -1,4 +1,4 @@
-import { ToDo2 } from './toDo2';
+import { ToDo } from './ToDo';
 
 export interface Response {
    statusCode: number;
@@ -16,7 +16,7 @@ export interface TaskResponse {
 
 export interface TaskData {
    row_returned: number,
-   tasks: ToDo2[];
+   tasks: ToDo[];
 }
 
 interface Data {

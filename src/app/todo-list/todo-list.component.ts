@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ToDo2 } from '../model/toDo2';
+import { ToDo } from '../model/ToDo';
 import { DataService } from '../data.service';
 
 @Component({
@@ -9,11 +9,11 @@ import { DataService } from '../data.service';
 })
 export class ToDoListComponent {
 
-  @Input() toDoList: ToDo2[];
+  @Input() toDoList: ToDo[];
   
   constructor(private dataService: DataService) { }
 
-  deleteTask(todo: ToDo2) {
+  deleteTask(todo: ToDo) {
     this.dataService.deleteTask(todo)
       .subscribe(
         _ => this.toDoList = this.deleteTodoFromArray(this.toDoList, todo),
@@ -21,13 +21,12 @@ export class ToDoListComponent {
       )
   }
 
-  updateTask(todo: ToDo2) {
+  updateTask(todo: ToDo) {
     if(todo.completed === 'Y') {
       todo.completed = 'N';
     } else {
       todo.completed = 'Y';
     }
-    console.log('patch', todo);
     this.dataService.updateTask(todo)
     .subscribe(
         {
@@ -36,7 +35,7 @@ export class ToDoListComponent {
       );
   }
 
-  private deleteTodoFromArray(array: ToDo2[], todo: ToDo2) : ToDo2[] {
+  private deleteTodoFromArray(array: ToDo[], todo: ToDo) : ToDo[] {
     return array.filter(e => e.id !== todo.id);
   }
 

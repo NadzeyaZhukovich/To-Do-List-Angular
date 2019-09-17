@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ToDo2 } from '../model/toDo2';
+import { ToDo } from '../model/ToDo';
 import { DataService } from '../data.service'; 
 
 @Component({
@@ -11,9 +11,9 @@ export class TasksComponent implements OnInit {
 
   constructor(private dataService: DataService) {  }
 
-  toDoLists: ToDo2[] = [];
+  toDoLists: ToDo[] = [];
 
-  addTask(todo: ToDo2) {
+  addTask(todo: ToDo) {
     this.dataService.addTask(todo)
       .subscribe(
         data => {
@@ -29,17 +29,15 @@ export class TasksComponent implements OnInit {
 
   ngOnInit() {
     console.log('init');
-    this.fetchToDo2();
+    this.fetchToDo();
   }
 
-  fetchToDo2() {
+  fetchToDo() {
     this.dataService.getTasks() 
       .subscribe( 
-        taskResponse => {
-          console.log(taskResponse.data);
-          this.toDoLists = taskResponse.data.tasks;
-        },
-        error =>this.handleError(error)
+        taskResponse => 
+          this.toDoLists = taskResponse.data.tasks,
+          error =>this.handleError(error)
       );
   }
 

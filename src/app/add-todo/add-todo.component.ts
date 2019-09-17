@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
-import * as nanoid from 'nanoid';
-import { ToDo2 } from '../model/toDo2';
+import { ToDo } from '../model/ToDo';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../local-storage.service';
 import { AuthService } from '../auth.service';
@@ -13,7 +12,7 @@ import { AuthService } from '../auth.service';
 export class AddToDoComponent {
   task: string;
   
-  @Output() addEmitter = new EventEmitter<ToDo2>();
+  @Output() addEmitter = new EventEmitter<ToDo>();
   
   constructor(private router: Router,
               private localStorageService: LocalStorageService,
@@ -21,9 +20,8 @@ export class AddToDoComponent {
 
   addTaskBtn() {
     const todo = {
-      id: nanoid(),
       title: this.task,
-      completed: 'N'} as ToDo2;
+      completed: 'N'} as ToDo;
 
       this.addEmitter.emit(todo);
   

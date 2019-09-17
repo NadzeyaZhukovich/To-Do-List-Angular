@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ToDo2 } from './model/toDo2';
+import { ToDo } from './model/ToDo';
 import { LocalStorageService } from './local-storage.service';
 import { TaskResponse } from './model/response';
 
@@ -23,7 +23,7 @@ export class DataService {
     );
   }
 
-  addTask(todo: ToDo2): Observable<TaskResponse> {
+  addTask(todo: ToDo): Observable<TaskResponse> {
     return this.http.post<TaskResponse>(
       this.tasksUrl, 
       todo,
@@ -31,7 +31,7 @@ export class DataService {
     );
   }
 
-  deleteTask(todo: ToDo2): Observable<null> {
+  deleteTask(todo: ToDo): Observable<null> {
     const url = `${this.tasksUrl}/${todo.id}`;
     return this.http.delete<null>(
       url,
@@ -39,7 +39,7 @@ export class DataService {
     );
   }
 
-  updateTask(todo: ToDo2): Observable<TaskResponse> {
+  updateTask(todo: ToDo): Observable<TaskResponse> {
     const url = `${this.tasksUrl}/${todo.id}`;
     const body = { completed : todo.completed };
     return this.http.patch<TaskResponse>(
