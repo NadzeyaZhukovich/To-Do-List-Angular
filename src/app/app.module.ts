@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { LocalStorageService } from './local-storage.service';
 import { AuthGuardService } from './auth-guard.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthorizationHeader} from './shared/interceptors/auth-header.interceptor'; 
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -47,7 +49,16 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [DataService, AuthService, LocalStorageService, AuthGuardService],
+  providers: [DataService,
+              AuthService,
+              LocalStorageService,
+              AuthGuardService,
+              {
+                provide: HTTP_INTERCEPTORS,
+                useClass: AuthorizationHeader,
+                multi: true
+              }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

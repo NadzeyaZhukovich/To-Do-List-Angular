@@ -11,31 +11,27 @@ import { TaskResponse } from './model/response';
 export class DataService {
   baseUrl = 'https://cors-anywhere.herokuapp.com/https://alexzh.com/api/tasks/v1';
   tasksUrl = `${this.baseUrl}/tasks`;
-  headers = { headers: this.generateAuthorizationHeader() };
 
   constructor(private http: HttpClient,
               private localStorage: LocalStorageService) { }
 
   getTasks(): Observable<TaskResponse> {
     return this.http.get<TaskResponse>(
-      this.tasksUrl, 
-      this.headers
+      this.tasksUrl
     );
   }
 
   addTask(todo: ToDo): Observable<TaskResponse> {
     return this.http.post<TaskResponse>(
       this.tasksUrl, 
-      todo,
-      this.headers
+      todo
     );
   }
 
   deleteTask(todo: ToDo): Observable<null> {
     const url = `${this.tasksUrl}/${todo.id}`;
     return this.http.delete<null>(
-      url,
-      this.headers
+      url
     );
   }
 
@@ -44,13 +40,7 @@ export class DataService {
     const body = { completed : todo.completed };
     return this.http.patch<TaskResponse>(
       url,
-      body, 
-      this.headers
+      body
     );
   } 
-
-  private generateAuthorizationHeader(): HttpHeaders {
-    const accessToken = this.localStorage.get('access_token');
-    return new HttpHeaders().set('Authorization', accessToken)
-  }
 }
