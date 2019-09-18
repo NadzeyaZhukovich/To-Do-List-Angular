@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ToDo } from './model/toDo';
-import { LocalStorageService } from './local-storage.service';
 import { TaskResponse } from './model/response';
 
 @Injectable({
@@ -12,8 +11,7 @@ export class DataService {
   baseUrl = 'https://cors-anywhere.herokuapp.com/https://alexzh.com/api/tasks/v1';
   tasksUrl = `${this.baseUrl}/tasks`;
 
-  constructor(private http: HttpClient,
-              private localStorage: LocalStorageService) { }
+  constructor(private http: HttpClient) { }
 
   getTasks(): Observable<TaskResponse> {
     return this.http.get<TaskResponse>(

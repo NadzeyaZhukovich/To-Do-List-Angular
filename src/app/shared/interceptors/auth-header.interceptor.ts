@@ -9,7 +9,7 @@ export class AuthorizationHeader implements HttpInterceptor {
     
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {        
         const auth = request.clone({
-            headers: request.headers.set('Authorization', this.localStorage.get('access_token')) 
+            headers: request.headers.set('Authorization', this.localStorage.get('access_token'))
         });
         return next.handle(auth);
       }
