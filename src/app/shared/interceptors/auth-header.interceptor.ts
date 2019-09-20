@@ -7,7 +7,7 @@ import { LocalStorageService } from 'src/app/local-storage.service';
 export class AuthorizationHeader implements HttpInterceptor {
     constructor( private localStorage: LocalStorageService ) { }
     
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {        
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {   
         const auth = request.clone({
             headers: request.headers.set('Authorization', this.localStorage.get('access_token'))
         });

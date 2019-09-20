@@ -9,7 +9,7 @@ export class LocalStorageService {
 
   get(key: string) {
     let value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : null;
+    return value ? JSON.parse(value) : '';
   }
 
   set(key: string, value: any) {

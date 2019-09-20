@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToDo } from '../model/toDo';
-import { DataService } from '../data.service'; 
+import { DataService } from '../data.service';
+import { ManageDataService } from '../manage-data.service';
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import { filter, map, mergeMap, toArray } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tasks',
@@ -8,61 +11,34 @@ import { DataService } from '../data.service';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
+  tasks$: Observable<ToDo[]>
 
-  constructor(private dataService: DataService) {  }
-
-  toDoLists: ToDo[] = [];
-
-  addTask(todo: ToDo) {
-    this.dataService.addTask(todo)
-      .subscribe(
-        data => {
-          if(data.success) {
-            this.toDoLists.push(data.data.tasks[0])
-          } else {
-            console.log('error:', data.messages);
-          }
-        },
-        error => this.handleError(error)
-      )
-  }
-
-  deleteTask(todo: ToDo) {
-    console.log('delete:', todo);
-    this.dataService.deleteTask(todo)
-      .subscribe(
-        _ => this.toDoLists = this.deleteTodoFromArray(this.toDoLists, todo),
-        error => this.handleError(error)
-      )
-  }
-
-  updateTask(todo: ToDo) {
-    this.dataService.updateTask(todo)
-    .subscribe(
-        {
-          error: this.handleError
-        }
-      );
-  }
-
-  fetchToDo() {
-    this.dataService.getTasks() 
-      .subscribe( 
-        taskResponse => 
-          this.toDoLists = taskResponse.data.tasks,
-          error =>this.handleError(error)
-      );
-  }
+  constructor(private dataService: DataService,
+    private manageData: ManageDataService) { }
 
   ngOnInit() {
     this.fetchToDo();
   }
 
-  private handleError(error) {
-    console.log(error);
-  } 
-  
-  private deleteTodoFromArray(array: ToDo[], todo: ToDo) : ToDo[] {
-    return array.filter(e => e.id !== todo.id);
+
+  addTask(todo: ToDo, ) {
+    this.manageData.add(todo);
+  }
+
+  deleteTask(todo: ToDo) {
+    this.manageData.delete(todo);
+    // this.manageData.delete(todo).subscribe(() => {
+ 
+    // });
+    // this.tasks$ = this.tasks$.pipe(map(todoList => todoList.filter((todo: ToDo) => todo.id !== todo.id)));
+    // this.tasks$ = this.tasks$.pipe(mergeMap(list=>list), filter((todo: ToDo) => todo.id !== todo.id), toArray());
+  }
+
+  updateTask(todo: ToDo) {
+    this.manageData.update(todo);
+  }
+
+  fetchToDo() {
+    this.tasks$ = this.manageData.tasks$;
   }
 }

@@ -3,7 +3,7 @@
         (addEmitter)="addTask($event)">
     </app-add-todo>
     <app-todo-list 
-        [toDoList]="toDoLists" 
+        [toDoList]="tasks$"
         (deleteItem)="deleteTask($event)"
         (changeItem)="updateTask($event)">
     </app-todo-list>

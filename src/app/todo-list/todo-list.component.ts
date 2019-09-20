@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ToDo } from '../model/toDo';
 import { DataService } from '../data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -9,7 +10,7 @@ import { DataService } from '../data.service';
 })
 export class ToDoListComponent {
 
-  @Input() toDoList: ToDo[];
+  @Input() toDoList: Observable<ToDo[]>;
   @Output() deleteItem = new EventEmitter<ToDo>();
   @Output() changeItem = new EventEmitter<ToDo>();
 }
