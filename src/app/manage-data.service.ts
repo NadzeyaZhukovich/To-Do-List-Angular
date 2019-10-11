@@ -45,8 +45,4 @@ export class ManageDataService {
     console.log(error);
     return throwError(error);
   }
-
-  // private deleteTodoFromArray(array: ToDo[], todo: ToDo): ToDo[] {
-  //   return array.filter(e => e.id !== todo.id);
-  // }
 }

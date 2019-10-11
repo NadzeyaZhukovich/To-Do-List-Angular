@@ -8,7 +8,8 @@ import { TaskResponse } from './model/response';
   providedIn: 'root'
 })
 export class DataService {
-  baseUrl = 'https://cors-anywhere.herokuapp.com/https://alexzh.com/api/tasks/v1';
+  // baseUrl = 'https://cors-anywhere.herokuapp.com/https://alexzh.com/api/tasks/v1';
+  baseUrl = 'http://localhost:8888/tasks/v1';
   tasksUrl = `${this.baseUrl}/tasks`;
 
   constructor(private http: HttpClient) { }
@@ -21,7 +22,7 @@ export class DataService {
 
   addTask(todo: ToDo): Observable<TaskResponse> {
     return this.http.post<TaskResponse>(
-      this.tasksUrl, 
+      this.tasksUrl,
       todo
     );
   }
@@ -40,5 +41,5 @@ export class DataService {
       url,
       body
     );
-  } 
+  }
 }

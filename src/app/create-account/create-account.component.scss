@@ -1,57 +1,85 @@
-.logScreen{
+$black: #000000;
+$white: #FFFFFF;
+$light-grey: #EEEEEE;
+$project-blue: #6200EE;
+$dark-blue: #3700B3;
+$turquoise: #03DAC5;
+$violet: #BB86FC;
+
+.log-screen {
     width: 350px;
     height: auto;
-    padding: 10px;
-    margin: 0 auto;
-    margin-top: 30px;
-    color: #2C0173;
+    padding: 15px;
+    margin: 90px auto 0;
+    color: $dark-blue;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    box-sizing: border-box;
 
-    &Title{
+    &-title {
         text-align: center;
         margin-bottom: 20px;
+        font-size: 100%;
+        font-weight: 300;
+        letter-spacing: 1px;
     }
 
-    &Text{
-        font-size: 65%
-    }
-
-    &Input{
+    &-input {
         margin-top: 5px;
         margin-bottom: 15px;
-        width: 300px;
+        width: 100%;
         height: 35px;
-        border-style: none;
-        border: 1px solid #2C0173; 
+        border: 1px solid $light-grey;
+        border-radius: 50px;
+        outline: none;
+        padding: 0 15px;
+        box-sizing: border-box;
     }
 
-    .btn{
-        display: inline-block;
-        padding: 5px;
-        margin: 10px 0; 
-        border-style: none;
-        border: 2px solid #2C0173; 
-        font-size: 80%;
+    &-input:hover,
+    &-input:focus {
+        border-color: $dark-blue;
     }
 
-    .singInBtn{
-        margin-right: 30px;
+    .btn-box {
+        display: flex;
+        justify-content: center;
+
+        .btn {
+            padding: 5px 10px;
+            margin: 10px 0;
+            font-size: 60%;
+            border-radius: 50px;
+            outline: none;
+            border: none;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            color: $dark-blue;
+        }
+
+        .sing-in-btn {
+            margin-right: 30px;
+        }
+
+        .sing-in-btn:hover,
+        .sing-in-btn:active,
+        .sing-up-btn:hover,
+        .sing-up-btn:active {
+            background-color: $violet;
+            color: $white;
+        }
     }
 
-    .singInBtn:hover,
-    .singInBtn:active{
-        color: #fff;
-        background-color: #190140;
-        border-color: #190140;
+    // Clear custom background-color in authorization inputs
+
+    @-webkit-keyframes autofill {
+        to {
+            color: inherit;
+            background: transparent;
+        }
     }
 
-    .singUpBtn{
-        background-color: #2C0173;
-        color: #fff;
-    }
-
-    .singUpBtn:hover,
-    .singUpBtn:active{
-        background-color: #190140;
-        border-color: #190140;
+    input:-webkit-autofill {
+        -webkit-animation-name: autofill;
+        -webkit-animation-fill-mode: both;
     }
 }

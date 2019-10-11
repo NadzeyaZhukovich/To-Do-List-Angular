@@ -16,8 +16,7 @@ export class SignInComponent implements OnInit {
   form = this.fb.group({
     username: [''],
     password: ['']
-  }); 
-  
+  });
   constructor(private router: Router,
               private authService: AuthService,
               private fb: FormBuilder,
@@ -30,7 +29,7 @@ export class SignInComponent implements OnInit {
       .subscribe(
         response => this.handleSignInResponse(response),
         error => console.log(error)
-      )
+      );
   }
 
   createAccountClick() {
@@ -41,7 +40,6 @@ export class SignInComponent implements OnInit {
     this.localStorageService.set('session_id', response.data.session_id);
     this.localStorageService.set('access_token', response.data.access_token);
     this.localStorageService.set('refresh_token', response.data.refresh_token);
-    
     this.router.navigateByUrl('/tasks');
   }
 }

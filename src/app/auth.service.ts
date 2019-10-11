@@ -13,11 +13,12 @@ export class AuthService {
   constructor(private http: HttpClient,
               private localStorage: LocalStorageService) { }
 
-  private baseApi = 'https://cors-anywhere.herokuapp.com/https://api.tasks.alexzh.com/v1';
+  // private baseApi = 'https://cors-anywhere.herokuapp.com/https://api.tasks.alexzh.com/v1';
+  private baseApi = 'http://localhost:8888/tasks/v1';
   private userApi = `${this.baseApi}/users`;
   private sessionsApi = `${this.baseApi}/sessions`;
 
-  createAccount(user: User): Observable<Response> { 
+  createAccount(user: User): Observable<Response> {
     return this.http.post<Response>(this.userApi, user);
   }
 
@@ -29,8 +30,8 @@ export class AuthService {
     const sessionId = this.localStorage.get('session_id');
     const accessToken = this.localStorage.get('access_token');
     return this.http.delete<Response>(
-      `${this.sessionsApi}/${sessionId}`, 
+      `${this.sessionsApi}/${sessionId}`,
       { headers: {'Authorization' : accessToken} }
     );
-  } 
+  }
 }

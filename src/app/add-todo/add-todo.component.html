@@ -1,13 +1,28 @@
-<div class="addContainer">
-        <button class="addContainerLogOutBtn"
-                (click)="logOutBtn()">Log out</button>
-        <input type="text" 
-            placeholder="Add task"
-            class="addContainerElement addContainerElementInput"
-            [(ngModel)]="task">
-        <button class="addContainerElement addContainerElementBtn" 
-            (click)="addTaskBtn()">
-            Add
+<div class="add-container">
+    <div class="welcome-box">
+        <h1 class="welcome-text">Welcome, Nadja</h1>
+        <button class="log-out-btn"
+                (click)="logOutBtn()"
+        >
+            <svg width="28" height="38" viewBox="0 0 28 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.1677 11.9689C14.5342 11.9689 15.6522 10.8509 15.6522 9.48447C15.6522 8.11801 14.5342 7 13.1677 7C11.8012 7 10.6832 8.11801 10.6832 9.48447C10.6832 10.8509 11.8012 11.9689 13.1677 11.9689ZM8.69565 29.236L9.93789 23.7702L12.5466 26.2547V33.7081H15.0311V24.3913L12.4224 21.9068L13.1677 18.1801C14.7826 20.0435 17.2671 21.2857 20 21.2857V18.8012C17.6398 18.8012 15.6522 17.559 14.6584 15.8199L13.4161 13.8323C12.9193 13.087 12.1739 12.5901 11.3043 12.5901C10.9317 12.5901 10.6832 12.7143 10.3106 12.7143L3.85093 15.4472V21.2857H6.3354V17.0621L8.57143 16.1925L6.58385 26.2547L0.496894 25.0124L0 27.4969L8.69565 29.236Z" fill="#FFFFFF"/>
+                <line x1="27" y1="4" x2="27" y2="35" stroke="#FFFFFF" stroke-width="2"/>
+            </svg>
         </button>
+    </div>
+
+    <div class="add-task-box">
+        <input type="text"
+            placeholder="Add task"
+            class="input"
+            [(ngModel)]="task"
+        >
+
+        <button class="add-btn"
+                type="submit"
+            (click)="addTaskBtn()"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/><path d="M0 0h35v35H0z" fill="none"/></svg>
+        </button>
+    </div>
 </div>
- 

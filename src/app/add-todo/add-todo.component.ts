@@ -11,9 +11,7 @@ import { AuthService } from '../auth.service';
 })
 export class AddToDoComponent {
   task: string;
-  
   @Output() addEmitter = new EventEmitter<ToDo>();
-  
   constructor(private router: Router,
               private localStorageService: LocalStorageService,
               private auth: AuthService) { }
@@ -23,9 +21,8 @@ export class AddToDoComponent {
       title: this.task,
       completed: 'N'} as ToDo;
 
-      this.addEmitter.emit(todo);
-  
-      this.cleanToDo(); 
+    this.addEmitter.emit(todo);
+    this.cleanToDo();
   }
 
   logOutBtn() {
@@ -36,7 +33,7 @@ export class AddToDoComponent {
           this.router.navigateByUrl('/login/sign-in');
         },
         error => console.log(error)
-      )
+      );
   }
 
   private cleanToDo() {

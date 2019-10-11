@@ -1,15 +1,21 @@
 <div class="task">
-    <input type="checkbox" 
-            class="taskCheckbox" 
+    <label class="label-box">
+      <input type="checkbox"
+            class="checkbox"
             [checked]="todo.completed === 'Y' ? true : false"
             (change)="changedCompleteStatus($event.target.checked)"
-            >
-    <p class="taskText" 
-        [class.completedTask]="todo.completed === 'Y' ? true : false">
-        {{todo.title}}
-    </p>
-    <button class="taskDelete" 
-            (click)="deleteEmitter.emit(this.todo)">
-            Delete
-    </button>
+        >
+        <span class="checkbox-icon"
+              [class.check-on-icon]="todo.completed === 'Y' ? true : false">
+        </span>
+
+        <p class="task-text"
+           [class.completed-task]="todo.completed === 'Y' ? true : false">
+            {{todo.title}}
+        </p>
+    </label>
+    <button class="delete-btn"
+                     (click)="deleteEmitter.emit(this.todo)">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="#BB86FC"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+</button>
 </div>
