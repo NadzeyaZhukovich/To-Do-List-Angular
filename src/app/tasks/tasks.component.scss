@@ -1,10 +1,20 @@
-//:host {
-//  background-image: linear-gradient(to bottom, rgba(0, 0, 225, 0.2 ), rgba(0, 0, 333, 0.2));
-//}
+@import '../../assets/styles/adaptability';
 
 .main-container {
   border-radius: 10px;
   width: 900px;
-  margin: 30px auto 30px;
+  height: 100%;
+  margin: 0 auto;
   box-shadow: 0 0 3px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+
+  @include _1024 {
+    width: 750px;
+  }
+
+  @include _768 {
+    width: 100%;
+    border-radius: 0px;
+  }
 }

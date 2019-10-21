@@ -37,6 +37,7 @@ export class SignInComponent implements OnInit {
   }
 
   private handleSignInResponse(response: Response) {
+    console.log("log in response: " + response.toString());
     this.localStorageService.set('session_id', response.data.session_id);
     this.localStorageService.set('access_token', response.data.access_token);
     this.localStorageService.set('refresh_token', response.data.refresh_token);

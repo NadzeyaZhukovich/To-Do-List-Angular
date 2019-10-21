@@ -4,9 +4,11 @@
             class="checkbox"
             [checked]="todo.completed === 'Y' ? true : false"
             (change)="changedCompleteStatus($event.target.checked)"
+             [class.check-on-icon]="todo.completed === 'Y' ? true : false"
         >
         <span class="checkbox-icon"
-              [class.check-on-icon]="todo.completed === 'Y' ? true : false">
+              [class.check-on-icon]="todo.completed === 'Y' ? true : false"
+        >
         </span>
 
         <p class="task-text"

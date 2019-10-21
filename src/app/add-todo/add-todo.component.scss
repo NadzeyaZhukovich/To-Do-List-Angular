@@ -1,11 +1,5 @@
-$black: #000000;
-$white: #FFFFFF;
-$light-grey: #EEEEEE;
-$project-blue: #6200EE;
-$dark-blue: #3700B3;
-$turquoise: #03DAC5;
-$violet: #BB86FC;
-$light-violet: #e8effc;
+@import '../../assets/styles/project-colors';
+@import '../../assets/styles/adaptability';
 
 .add-container {
     padding: 0;
@@ -14,11 +8,20 @@ $light-violet: #e8effc;
     font-size: 100%;
     display: flex;
     flex-direction: column;
-
     align-items: center;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     box-sizing: border-box;
+
+    @include _1024 {
+        height: 135px;
+    }
+
+    @include _768 {
+        height: 100px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
 
     .welcome-box {
         display: flex;
@@ -31,19 +34,51 @@ $light-violet: #e8effc;
         padding: 10px 10px 0;
         box-sizing: border-box;
 
+        @include _1024 {
+            margin-bottom: 20px;
+        }
+
+        @include _768 {
+            margin-bottom: 10px;
+            padding: 7px 7px 0;
+
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+        }
+
         h1 {
             font-size: 100%;
             color: $white;
             font-weight: 300;
+
+            @include _768 {
+                font-size: 90%;
+            }
+
+            @include _481 {
+                font-size: 80%;
+            }
         }
 
         .log-out-btn {
             border: none;
             background-color: $dark-blue;
-            outline: none;
+            //outline: none;
 
             svg path:hover{
                 fill: $violet;
+            }
+
+            svg {
+                @include _768 {
+                    width: 23px;
+                    height: 33px;
+                }
+
+                @include _481 {
+                    width: 20px;
+                    height: 30px;
+                }
             }
         }
     }
@@ -51,6 +86,22 @@ $light-violet: #e8effc;
     .add-task-box {
         width: 650px;
         position: relative;
+
+        @include _1024 {
+            width: 540px;
+        }
+
+        @include _768 {
+            width: 440px;
+        }
+
+        @include _625 {
+            width: 400px;
+        }
+
+        @include _481 {
+            width: 240px;
+        }
 
         .input {
             width: 100%;
@@ -61,7 +112,7 @@ $light-violet: #e8effc;
             padding: 5px 50px 5px 10px;
             font-size: 70%;
             box-sizing: border-box;
-            outline: none;
+            //outline: none;
         }
 
         .input:hover,
@@ -70,14 +121,13 @@ $light-violet: #e8effc;
         }
 
         .add-btn {
-            outline: none;
+            //outline: none;
             border-style: none;
             border-radius: 50px;
             height: 35px;
             width: 35px;
             margin-left: 20px;
             background-color: $dark-blue;
-
             position: absolute;
             cursor: pointer;
             top: 0;
