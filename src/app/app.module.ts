@@ -17,7 +17,7 @@ import { AuthService } from './auth.service';
 import { LocalStorageService } from './local-storage.service';
 import { AuthGuardService } from './auth-guard.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthorizationHeader} from './shared/interceptors/auth-header.interceptor'; 
+import { AuthorizationHeader} from './shared/interceptors/auth-header.interceptor';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -29,7 +29,7 @@ const appRoutes: Routes = [
   ]
   },
   {path: 'tasks', component: TasksComponent, canActivate: [AuthGuardService]}
-]
+];
 
 @NgModule({
   declarations: [

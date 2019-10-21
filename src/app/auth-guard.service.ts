@@ -10,12 +10,12 @@ export class AuthGuardService implements CanActivate {
   constructor(private router: Router,
               private localStorageService: LocalStorageService) { }
 
-  // TODO: check access token expire time: refresh access token is needed 
-  //       use isTokenExpired function
+  // TODO: check access token expire time: refresh access token is needed
+  //      use isTokenExpired function
   accessToken = this.localStorageService.get('access_token');
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if(!this.accessToken) {
+    if (!this.accessToken) {
       this.router.navigateByUrl('/login/sign-in');
     }
     return true;

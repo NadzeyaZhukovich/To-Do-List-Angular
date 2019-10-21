@@ -19,7 +19,7 @@ export class ManageDataService {
   add(todo: ToDo) {
     this.dataService.addTask(todo)
       .pipe(catchError(this.handleError))
-      .subscribe(() => this.fetch())
+      .subscribe(() => this.fetch());
   }
 
   delete(todo: ToDo) {

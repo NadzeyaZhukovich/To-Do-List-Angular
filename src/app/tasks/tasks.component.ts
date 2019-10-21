@@ -11,7 +11,7 @@ import { filter, map, mergeMap, toArray } from 'rxjs/operators';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
-  tasks$: Observable<ToDo[]>
+  tasks$: Observable<ToDo[]>;
 
   constructor(private dataService: DataService,
               private manageData: ManageDataService) { }
