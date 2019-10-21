@@ -4,18 +4,18 @@ export interface Response {
    statusCode: number;
    success: boolean;
    messages: string[];
-   data: Data; 
+   data: Data;
 }
 
 export interface TaskResponse {
    statusCode: number;
    success: boolean;
    messages: string[];
-   data: TaskData; 
+   data: TaskData;
 }
 
 export interface TaskData {
-   row_returned: number,
+   row_returned: number;
    tasks: ToDo[];
 }
 

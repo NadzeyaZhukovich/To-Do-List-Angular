@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ToDo } from '../model/toDo';
-import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 
 @Component({

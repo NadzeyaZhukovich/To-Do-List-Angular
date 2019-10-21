@@ -7,8 +7,8 @@ import { ToDoListComponent } from './todo-list/todo-list.component';
 import { ToDoItemComponent } from './todo-item/todo-item.component';
 import { AddToDoComponent } from './add-todo/add-todo.component';
 import { DataService } from './data.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Routes, RouterModule, CanActivate} from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { TasksComponent } from './tasks/tasks.component';
@@ -21,7 +21,7 @@ import { AuthorizationHeader} from './shared/interceptors/auth-header.intercepto
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'login',component: LoginComponent,
+  {path: 'login', component: LoginComponent,
   children: [
     {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
     {path: 'sign-in', component: SignInComponent},
