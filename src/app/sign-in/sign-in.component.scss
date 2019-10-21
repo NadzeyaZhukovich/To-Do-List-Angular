@@ -1,4 +1,5 @@
-@import '../../assets/styles/project-colors';
+@import '../../assets/styles/colors';
+@import '../../assets/styles/adaptability';
 
 .log-screen {
     width: 350px;
@@ -9,6 +10,10 @@
     box-shadow: 0 0 3px rgba(0,0,0,0.2);
     border-radius: 10px;
     box-sizing: border-box;
+
+    @include _481 {
+        width: 300px;
+    }
 
     &-title {
         text-align: center;
@@ -42,6 +47,11 @@
     .btn-box {
         display: flex;
         justify-content: center;
+        align-items: center;
+
+        @include _481 {
+            flex-direction: column;
+        }
 
         .btn {
             padding: 5px 10px;
@@ -51,19 +61,33 @@
             outline: none;
             border: none;
             box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            color: $dark-blue;
+            color: $white;
+
+            @include _481 {
+                width: 180px;
+            }
         }
 
         .sing-in-btn{
             margin-right: 30px;
+            background-color: $project-blue;
+
+            @include _481 {
+                margin-right: 0;
+            }
+        }
+
+        .sing-up-btn {
+            background-color: $dark-blue;
         }
 
         .sing-in-btn:hover,
         .sing-in-btn:active,
+        .sing-in-btn:focus,
         .sing-up-btn:hover,
-        .sing-up-btn:active{
-            background-color: $violet;
-            color: $white;
+        .sing-up-btn:active,
+        .sing-up-btn:focus {
+            background-color: $pink;
         }
     }
 

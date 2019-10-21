@@ -1,4 +1,4 @@
-@import '../../assets/styles/project-colors';
+@import '../../assets/styles/colors';
 @import '../../assets/styles/adaptability';
 
 .task {
@@ -63,7 +63,6 @@
             font-size: 80%;
             padding-left: 20px;
             width: 100%;
-            //margin: 0 35px 0 0;
             margin-right: 35px;
 
             @include _481 {
@@ -78,9 +77,16 @@
 
     .delete-btn {
         border-style: none;
-        //outline: none;
+        outline: none;
 
-        svg:hover {
+        @include _481 {
+            background-color: $white;
+        }
+    }
+
+    .delete-btn:hover,
+    .delete-btn:focus {
+        svg {
             fill: $dark-blue;
         }
     }
