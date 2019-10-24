@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Response } from './model/response';
 import { User } from './model/user';
 import { LocalStorageService } from './local-storage.service';
+import { BaseServiceConst} from './base.service.const';
 
 @Injectable({
   providedIn: 'root'
@@ -13,24 +14,22 @@ export class AuthService {
   constructor(private http: HttpClient,
               private localStorage: LocalStorageService) { }
 
-  // private baseApi = 'https://cors-anywhere.herokuapp.com/https://api.tasks.alexzh.com/v1';
-  private baseApi = 'http://localhost:8888/tasks/v1';
-  private userApi = `${this.baseApi}/users`;
-  private sessionsApi = `${this.baseApi}/sessions`;
+  private userApiUrl = `${BaseServiceConst.BASE_API_URL}/users`;
+  private sessionsApiUrl = `${BaseServiceConst.BASE_API_URL}/sessions`;
 
   createAccount(user: User): Observable<Response> {
-    return this.http.post<Response>(this.userApi, user);
+    return this.http.post<Response>(this.userApiUrl, user);
   }
 
   signIn(user: User): Observable<Response> {
-    return this.http.post<Response>(this.sessionsApi, user);
+    return this.http.post<Response>(this.sessionsApiUrl, user);
   }
 
   logOut(): Observable<Response> {
     const sessionId = this.localStorage.get('session_id');
     const accessToken = this.localStorage.get('access_token');
     return this.http.delete<Response>(
-      `${this.sessionsApi}/${sessionId}`,
+      `${this.sessionsApiUrl}/${sessionId}`,
       { headers: {'Authorization' : accessToken} }
     );
   }

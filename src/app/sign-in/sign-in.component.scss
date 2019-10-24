@@ -1,107 +1,121 @@
 @import '../../assets/styles/colors';
 @import '../../assets/styles/adaptability';
 
-.log-screen {
-    width: 350px;
-    height: auto;
-    padding: 15px;
-    margin: 90px auto 0;
-    color: $dark-blue;
-    box-shadow: 0 0 3px rgba(0,0,0,0.2);
-    border-radius: 10px;
-    box-sizing: border-box;
+.log-screen-box {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 
-    @include _481 {
-        width: 300px;
-    }
-
-    &-title {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 100%;
-        font-weight: 300;
-        letter-spacing: 1px;
-    }
-
-    &-text {
-        font-size: 65%
-    }
-
-    &-input {
-        margin-top: 5px;
-        margin-bottom: 15px;
-        width: 100%;
-        height: 35px;
-        border: 1px solid $light-grey;
-        border-radius: 50px;
-        outline: none;
-        padding: 0 15px;
+    .log-screen {
+        width: 400px;
+        height: auto;
+        padding: 15px;
+        color: $dark-blue;
+        box-shadow: 0 0 3px rgba(0,0,0,0.2);
+        border-radius: 10px;
         box-sizing: border-box;
-    }
 
-    &-input:hover,
-    &-input:focus {
-        border-color: $dark-blue;
-    }
-
-    .btn-box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        @include _481 {
-            flex-direction: column;
+        @include _625 {
+            box-shadow: none;
+            border-radius: 0px;
         }
 
-        .btn {
-            padding: 5px 10px;
-            margin: 10px 0;
-            font-size: 60%;
+        &-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 100%;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        &-input {
+            margin-top: 5px;
+            margin-bottom: 15px;
+            width: 100%;
+            height: 40px;
+            border: 1px solid $light-grey;
             border-radius: 50px;
             outline: none;
-            border: none;
-            box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            color: $white;
+            padding: 0 15px;
+            box-sizing: border-box;
+            font-size: 70%;
 
-            @include _481 {
-                width: 180px;
+            @include _768 {
+                height: 35px;
+                font-size: 60%;
+
             }
         }
 
-        .sing-in-btn{
-            margin-right: 30px;
-            background-color: $project-blue;
+        &-input:hover,
+        &-input:focus {
+            border-color: $dark-blue;
+        }
+
+        .btn-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             @include _481 {
-                margin-right: 0;
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            .btn {
+                padding: 5px 10px;
+                margin: 10px 0;
+                font-size: 70%;
+                border-radius: 50px;
+                outline: none;
+                border: none;
+                box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+                color: $white;
+
+                @include _481 {
+                    width: 140px;
+                    font-size: 60%;
+                }
+            }
+
+            .sing-in-btn {
+                margin-right: 30px;
+                background-color: $project-blue;
+
+                @include _481 {
+                    margin-right: 0;
+                }
+            }
+
+            .sing-up-btn {
+                background-color: $dark-blue;
+            }
+
+            .sing-in-btn:hover,
+            .sing-in-btn:active,
+            .sing-in-btn:focus,
+            .sing-up-btn:hover,
+            .sing-up-btn:active,
+            .sing-up-btn:focus {
+                background-color: $pink;
             }
         }
 
-        .sing-up-btn {
-            background-color: $dark-blue;
+        // Clear custom background-color in authorization inputs
+
+        @-webkit-keyframes autofill {
+            to {
+                color: inherit;
+                background: transparent;
+            }
         }
 
-        .sing-in-btn:hover,
-        .sing-in-btn:active,
-        .sing-in-btn:focus,
-        .sing-up-btn:hover,
-        .sing-up-btn:active,
-        .sing-up-btn:focus {
-            background-color: $pink;
+        input:-webkit-autofill {
+            -webkit-animation-name: autofill;
+            -webkit-animation-fill-mode: both;
         }
-    }
-
-    // Clear custom background-color in authorization inputs
-
-    @-webkit-keyframes autofill {
-        to {
-            color: inherit;
-            background: transparent;
-        }
-    }
-
-    input:-webkit-autofill {
-        -webkit-animation-name: autofill;
-        -webkit-animation-fill-mode: both;
     }
 }
