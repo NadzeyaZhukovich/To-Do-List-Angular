@@ -1,25 +1,37 @@
 # ToDoListAngular
 This is an Angular application which allows you to work with notes.
 
-<p float="left">
-  <img src="./art/app-demo.png" height="400px"/>
+<p align="center">
+  <img src="./art/app-demo.png" height="800px"/>
 </p>
 
 ## Features:
-* Add a note (text, label, status)
+* Create account
+* Log in
+* Log out 
+* Add a note (text, status)
 * Delete note
 * Mark note as completed
+
+## What to improve?
+* Unit tests
+* UI tests
+* CI
 
 ## Frameworks and Tools
 * TypeScript
 * Angular 8
-* RxJs
-* nanoid
-* json-server
+* RxJS
+* SASS
+* [RESTful API for the Task list](https://github.com/AlexZhukovich/tasks-rest-api)
 
 ## Configuration
-This project use `json-server` dependency which allows us to interact with `data/db.json` file.
-We can run it: `json-server --watch data/db.json`. 
+API url can be changed in `BaseServiceConst` class. 
+```
+export class BaseServiceConst {
+    static readonly BASE_API_URL = 'http://localhost:8888/tasks/v1';
+}
+```
 
 ## Development server
 
