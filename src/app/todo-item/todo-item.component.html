@@ -1,18 +1,19 @@
-<div class="task">
+<div class="task"
+     [class.check-on-icon]="todo.completed === 'Y'">
     <label class="label-box">
       <input type="checkbox"
             class="checkbox"
-            [checked]="todo.completed === 'Y' ? true : false"
+            [checked]="todo.completed === 'Y'"
             (change)="changedCompleteStatus($event.target.checked)"
-             [class.check-on-icon]="todo.completed === 'Y' ? true : false"
+             [class.check-on-icon]="todo.completed === 'Y'"
         >
         <span class="checkbox-icon"
-              [class.check-on-icon]="todo.completed === 'Y' ? true : false"
+              [class.check-on-icon]="todo.completed === 'Y'"
         >
         </span>
 
         <p class="task-text"
-           [class.completed-task]="todo.completed === 'Y' ? true : false">
+           [class.completed-task]="todo.completed === 'Y'">
             {{todo.title}}
         </p>
     </label>
