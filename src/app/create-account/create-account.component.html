@@ -1,0 +1,31 @@
+<div class="log-screen-box">
+    <div class="log-screen">
+        <h4 class="log-screen-title">Create your account</h4>
+        <form [formGroup]="form" (ngSubmit)="createAccountClick()">
+            <input class="log-screen-input"
+                    type="text"
+                    placeholder="Full name"
+                    formControlName= "fullname">
+            <input class="log-screen-input"
+                    type="text"
+                   placeholder="User name"
+                    formControlName= "username">
+            <input class="log-screen-input"
+                    type="password"
+                   placeholder="Password name"
+                    formControlName= "password">
+
+            <div class="btn-box">
+                <button class="btn sing-in-btn"
+                        type="button"
+                        (click)="singInClick()">
+                        Sing in
+                </button>
+                <button class="btn sing-up-btn"
+                        type="submit">
+                        Create account
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

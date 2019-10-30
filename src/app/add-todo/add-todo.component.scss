@@ -1,50 +1,141 @@
-$fonts-color: #2C0173;
-$backGround-color-blue: rgb(79, 2, 204);
-$backGround-color-hover-btn: #2C0173;
-$backGround-color-white: rgb(255, 255, 255);
+@import '../../assets/styles/colors';
+@import '../../assets/styles/adaptability';
 
-.addContainer{
-    padding: 60px 0;
-    text-align: center;
-    background-color: $backGround-color-blue;
-    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+.add-container {
+    padding: 0;
+    height: 150px;
+    background-color: $project-blue;
+    font-size: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
 
-    &Element{
-        font-size: 90%;
-        color: $fonts-color;
-        padding: 5px 10px;
-        outline: none;
-        text-transform: capitalize;
-        
-        &Input{
-            width: 500px;
-            height: 25px;
+    @include _1024 {
+        height: 135px;
+    }
+
+    @include _768 {
+        height: 100px;
+    }
+
+    .welcome-box {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 30px;
+        background-color: $dark-blue;
+        padding: 15px 15px 0;
+        box-sizing: border-box;
+
+        @include _1024 {
+            margin-bottom: 20px;
+        }
+
+        @include _768 {
+            margin-bottom: 10px;
+            padding: 7px 7px 0;
+        }
+
+        @include _481 {
+            padding: 10px 15px 0;
+        }
+
+        h1 {
+            font-size: 100%;
+            color: $white;
+            font-weight: 300;
+
+            @include _768 {
+                font-size: 90%;
+            }
+
+            @include _481 {
+                font-size: 80%;
+            }
+        }
+
+        .log-out-btn {
+            border: none;
+            background-color: $dark-blue;
+            outline: none;
+
+            svg {
+                @include _768 {
+                    width: 23px;
+                    height: 33px;
+                }
+
+                @include _481 {
+                    width: 20px;
+                    height: 30px;
+                }
+            }
+        }
+
+        .log-out-btn:focus,
+        .log-out-btn:hover {
+            svg path {
+                fill: $violet;
+            }
+        }
+    }
+
+    .add-task-box {
+        width: 650px;
+        position: relative;
+
+        @include _1024 {
+            width: 540px;
+        }
+
+        @include _768 {
+            width: 440px;
+        }
+
+        @include _625 {
+            width: 400px;
+        }
+
+        @include _481 {
+            width: 300px;
+        }
+
+        .input {
+            width: 100%;
+            height: 35px;
             border-style: none;
+            border-radius: 50px;
             transition: none;
+            padding: 5px 50px 5px 10px;
+            font-size: 70%;
+            box-sizing: border-box;
+            outline: none;
         }
 
-        &Select{
+        .input:hover,
+        .input:focus {
+            background-color: $light-violet;
+            border: 1px solid $dark-blue;
+        }
+
+        .add-btn {
+            outline: none;
             border-style: none;
-            border-radius: 0px;
+            border-radius: 50px;
             height: 35px;
-            background-color: $backGround-color-white; 
-            border-left: 1px solid $fonts-color;
+            width: 35px;
+            margin-left: 20px;
+            background-color: $dark-blue;
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            right: 0;
         }
-    
-        &Select:hover{
-            background-color: $backGround-color-hover-btn;
-            color:$backGround-color-white;
-        }
-    
-        &Btn{
-            border-style: none;
-            height: 35px;
-            border-left: 1px solid $fonts-color;
-        }
-    
-        &Btn:hover{
-            background-color: $backGround-color-hover-btn;
-            color: $backGround-color-white;
+
+        .add-btn:hover,
+        .add-btn:focus {
+            background-color: $violet;
         }
     }
 }

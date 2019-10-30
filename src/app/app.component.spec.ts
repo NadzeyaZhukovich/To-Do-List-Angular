@@ -10,6 +10,15 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
+ // compileComponents TestBed.configureTestingModule({
+ //    declarations: [
+ //      AppComponent,
+ //      BannerStubComponent,
+ //      RouterLinkDirectiveStub
+ //    ],
+ //    schemas: [ NO_ERRORS_SCHEMA ]
+ //  })
+
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;

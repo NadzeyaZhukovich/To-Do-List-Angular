@@ -12,14 +12,8 @@ export class ToDoItemComponent {
   @Output() deleteEmitter = new EventEmitter<ToDo>();
   @Output() updateEmitter = new EventEmitter<ToDo>();
 
-  changedCompleteStatus(){
+  changedCompleteStatus(value: boolean) {
+    this.todo.completed = value ? 'Y' : 'N';
     this.updateEmitter.emit(this.todo);
-  }
-
-  constructor() {
-  }
-
-  deleteTaskBtn() {
-    this.deleteEmitter.emit(this.todo);
   }
 }

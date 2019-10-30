@@ -1,18 +1,24 @@
-<div class="task">
-    <input type="checkbox" 
-            class="taskCheckbox" 
-            [(ngModel)]="todo.isCompleted"
-            (change)="changedCompleteStatus($event)">
-    <span class="taskLabel" 
-            [ngStyle]="{background: todo.label.color}">
-            {{todo.label.title}}
-    </span>
-    <p class="taskText" 
-        [class.completedTask]="todo.isCompleted">
-        {{todo.task}}
-    </p>
-    <button class="taskDelete" 
-            (click)="deleteTaskBtn()">
-            Delete
-    </button>
+<div class="task"
+     [class.check-on-icon]="todo.completed === 'Y'">
+    <label class="label-box">
+      <input type="checkbox"
+            class="checkbox"
+            [checked]="todo.completed === 'Y'"
+            (change)="changedCompleteStatus($event.target.checked)"
+             [class.check-on-icon]="todo.completed === 'Y'"
+        >
+        <span class="checkbox-icon"
+              [class.check-on-icon]="todo.completed === 'Y'"
+        >
+        </span>
+
+        <p class="task-text"
+           [class.completed-task]="todo.completed === 'Y'">
+            {{todo.title}}
+        </p>
+    </label>
+    <button class="delete-btn"
+                     (click)="deleteEmitter.emit(this.todo)">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="#BB86FC"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+</button>
 </div>

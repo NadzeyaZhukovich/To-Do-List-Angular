@@ -1,0 +1,12 @@
+@import '../../assets/styles/colors';
+
+:host {
+  overflow: auto;
+}
+
+.no-task-text {
+  text-align: center;
+  font-size: 150%;
+  margin-top: 30px;
+  color: $grey;
+}
