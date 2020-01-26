@@ -10,10 +10,9 @@ import { throwError, of, Observable, BehaviorSubject } from 'rxjs';
 })
 export class ManageDataService {
   _tasks = new BehaviorSubject<ToDo[]>([]);
-  tasks$ = this._tasks.asObservable()
+  tasks$ = this._tasks.asObservable();
 
   constructor(private dataService: DataService) {
-    this.fetch();
   }
 
   add(todo: ToDo) {
