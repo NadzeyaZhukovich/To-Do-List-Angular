@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DataService } from './data.service';
-import { ToDo } from './model/toDo';
+import { ToDo } from './model/ToDo';
 import { map, catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError, of, Observable, BehaviorSubject } from 'rxjs';
@@ -35,6 +35,7 @@ export class ManageDataService {
   }
 
   fetch() {
+    this._tasks.next([]);
     this.dataService.getTasks()
       .pipe(catchError(this.handleError),
         map(response => response.data.tasks))

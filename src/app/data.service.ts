@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ToDo } from './model/toDo';
+import { ToDo } from './model/ToDo';
 import { TaskResponse } from './model/response';
 import { BaseServiceConst} from './base.service.const';
 

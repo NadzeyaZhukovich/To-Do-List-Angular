@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToDo } from '../model/toDo';
+import { ToDo } from '../model/ToDo';
 import { DataService } from '../data.service';
 import { ManageDataService } from '../manage-data.service';
 import { Observable, of, BehaviorSubject } from 'rxjs';
@@ -40,6 +40,7 @@ export class TasksComponent implements OnInit {
   }
 
   fetchToDo() {
+    this.manageData.fetch();
     this.tasks$ = this.manageData.tasks$;
   }
 }

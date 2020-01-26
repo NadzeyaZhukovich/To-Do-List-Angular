@@ -1,4 +1,4 @@
-import { ToDo } from './toDo';
+import { ToDo } from './ToDo';
 
 export interface Response {
    statusCode: number;
